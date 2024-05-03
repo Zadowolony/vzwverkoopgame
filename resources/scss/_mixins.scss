@@ -1,0 +1,53 @@
+@mixin grid-system($device) {
+
+
+    .col#{grid-class-name-generic($device)} {
+        flex: 1;
+
+    }
+
+    @for $size from 1 through 12 {
+        .col#{grid-class-name($device, $size)} {
+            width: calc($size / 12 * 100%);
+        }
+
+    }
+
+
+}
+
+@for $i from -50 through 50 {
+    .m-t-#{$i} {
+        margin-top: #{$i}px;
+    }
+
+    .m-b-#{$i} {
+        margin-bottom: #{$i}px;
+    }
+
+    .m-l-#{$i} {
+        margin-left: #{$i}px;
+    }
+
+    .m-r-#{$i} {
+        margin-right: #{$i}px;
+    }
+}
+
+@for $i from -50 through 50 {
+    .p-t-#{$i} {
+        padding-top: #{$i}px;
+    }
+
+    .p-b-#{$i} {
+        padding-bottom: #{$i}px;
+    }
+
+    .p-l-#{$i} {
+        padding-left: #{$i}px;
+    }
+
+    .p-r-#{$i} {
+        padding-right: #{$i}px;
+    }
+}

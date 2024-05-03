@@ -1,0 +1,325 @@
+@import 'functions', 'mixins', 'flex', 'button', 'text';
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* font-family: "Bebas Neue", sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container {
+    max-width: 1140px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include grid-system('all')
+}
+
+:root {
+
+    --purple: #C6B3FF;
+    --yellow: #F8FFA7;
+    --appleblue: #D4FBEB;
+    --lYellow: #FFF9BE;
+}
+
+
+.d-none-mobile {
+    display: none;
+}
+
+.bg-main-1 {
+
+    background-color: var(--lYellow);
+}
+
+.h1vzw {
+
+    font-size: 40px;
+}
+
+.h1donate {
+
+    font-size: 70px;
+    color: var(--purple);
+}
+
+.h1play {
+
+    font-size: 50px;
+}
+
+
+.head-title-home {
+    margin-bottom: -24px;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+.mobile-row-revert {
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.arrow-img {
+    /* Spiegelt de afbeelding horizontaal */
+    transform: scaleX(-1);
+}
+
+// mobile
+@media (min-width: 576px) {
+    .row {
+
+        @include grid-system('xs')
+    }
+}
+
+// tablet
+@media (min-width: 768px) {
+    .row {
+
+        @include grid-system('md')
+    }
+
+    .d-none-mobile {
+        display: flex;
+    }
+
+    .d-none-tablet {
+        display: none;
+    }
+
+    .head-title-home {
+        margin-bottom: -40px;
+    }
+
+    .h1vzw {
+        font-size: 70px;
+    }
+
+    .h1donate {
+
+        font-size: 120px;
+    }
+
+    .h1play {
+        font-size: 90px;
+    }
+
+    .mobile-row-revert {
+        width: 100%;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .arrow-img {
+        /* Spiegelt de afbeelding horizontaal */
+        transform: scaleX(1);
+    }
+
+}
+
+
+
+@media (min-width: 992px) {
+
+    .row {
+
+        @include grid-system('lg')
+    }
+
+}
+
+//desktop
+@media (min-width: 1200px) {
+
+    .row {
+
+        @include grid-system('xl')
+    }
+
+}
+
+.relative {
+    position: relative;
+}
+
+
+.header-bg {
+
+    background-color: var(--appleblue);
+    height: 80px;
+}
+
+header {
+
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+
+}
+
+nav a {
+
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    color: var(--purple);
+}
+
+nav a:active {
+    color: var(--appleblue);
+}
+
+.header-logo {
+
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+
+
+}
+
+.mobile-menu-appleblue {
+
+    height: 100px;
+    width: 100px;
+}
+
+.hero-section {
+    height: 90vh;
+    background-image: url('../../public/images/hero-home-picture.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.container-height {
+    height: 70vh
+}
+
+
+
+.home-search-input {
+
+    padding: 20px;
+    border-radius: 25px;
+    background-color: var(--appleblue);
+    border: solid 1px var(--purple);
+    width: 100%;
+}
+
+.fa-glass-absolute {
+
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.uitleg-section {
+    // background-color: var(--appleblue);
+    background-image: linear-gradient(to bottom, var(--appleblue), transparent 100%);
+}
+
+
+
+.card-uitleg {
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--yellow);
+    border-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    margin-bottom: 20px;
+
+
+}
+
+.card-div-img {
+
+    height: 100%;
+}
+
+.card-game {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--appleblue);
+    border-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 450px;
+
+
+
+}
+
+.game-carousel {
+
+    position: absolute;
+    right: -100px;
+    top: 200px !important;
+}
+
+.game-home-section {
+
+    height: 60vH;
+}
+
+.card-game__image-container {
+
+    height: 100%;
+    display: flex;
+    align-content: center;
+}
+
+.card-game__image-container img {
+    object-fit: contain;
+}

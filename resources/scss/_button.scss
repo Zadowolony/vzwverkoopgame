@@ -1,0 +1,88 @@
+button {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+// Color variations
+$colors: (
+    primary: #C6B3FF,
+    secondary: #F8FFA7,
+    success: #28a745,
+    danger: #dc3545,
+    warning: #ffc107
+);
+
+
+
+@each $name, $color in $colors {
+    .button-#{$name} {
+        background-color: $color;
+        color: black;
+
+        &:hover {
+            background-color: darken($color, 10%);
+
+        }
+    }
+}
+
+// Size variations
+.button-small {
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.button-large {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .button-small {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    .button-large {
+        padding: 20px 35px;
+        font-size: 1.4rem;
+    }
+
+
+}
+
+
+@media (min-width: 1200px) {
+    .button-small {
+        padding: 20px 25px;
+        font-size: 1rem;
+    }
+
+    .button-large {
+        padding: 25px 40px;
+        font-size: 1.6rem;
+    }
+}
+
+// Additional styles like outline buttons
+@each $name, $color in $colors {
+    .button-outline-#{$name} {
+        background-color: transparent;
+        border: 2px solid $color;
+        color: $color;
+
+        &:hover {
+            background-color: $color;
+            color: #fff;
+        }
+    }
+}

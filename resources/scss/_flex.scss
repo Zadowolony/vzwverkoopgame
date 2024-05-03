@@ -1,0 +1,130 @@
+/* Flexbox Utilities */
+.flex {
+    display: flex;
+    width: 100%;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-column-revert {
+    flex-direction: column-reverse;
+}
+
+.flex-row-revert {
+
+    flex-direction: row-reverse;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.align-items-start {
+    align-items: flex-start;
+}
+
+.align-items-end {
+    align-items: flex-end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-baseline {
+    align-items: baseline;
+}
+
+.align-items-stretch {
+    align-items: stretch;
+}
+
+.align-content-start {
+    align-content: flex-start;
+}
+
+.align-content-end {
+    align-content: flex-end;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.align-content-space-between {
+    align-content: space-between;
+}
+
+.align-content-space-around {
+    align-content: space-around;
+}
+
+.align-content-stretch {
+    align-content: stretch;
+}
+
+.gap5 {
+    gap: 5px;
+}
+
+.gap10 {
+    gap: 10px;
+}
+
+.gap15 {
+    gap: 15px;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
+.v-gap5 {
+    &>*+* {
+        margin-top: 5px;
+    }
+}
+
+.v-gap10 {
+    &>*+* {
+        margin-top: 10px;
+    }
+}
+
+.v-gap15 {
+    &>*+* {
+        margin-top: 15px;
+    }
+}
+
+.v-gap20 {
+    &>*+* {
+        margin-top: 20px;
+    }
+}
