@@ -1,4 +1,4 @@
-@import 'functions', 'mixins', 'flex', 'button', 'text';
+@import 'functions', 'mixins', 'flex', 'button', 'text', 'laravel';
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
@@ -42,6 +42,7 @@ img {
 :root {
 
     --purple: #C6B3FF;
+
     --yellow: #F8FFA7;
     --appleblue: #D4FBEB;
     --lYellow: #FFF9BE;
@@ -94,6 +95,30 @@ h2 {
     /* Spiegelt de afbeelding horizontaal */
     transform: scaleX(-1);
 }
+
+.login-text-1 {
+    font-size: 36px;
+
+}
+
+.login-text-2 {
+    font-size: 80px;
+
+}
+
+.login-text-3 {
+    font-size: 80px;
+    color: var(--purple);
+}
+
+.login-text-4 {
+    font-size: 60px;
+}
+
+.login-text-5 {
+    font-size: 65px;
+}
+
 
 // mobile
 @media (min-width: 576px) {
@@ -322,4 +347,114 @@ nav a:active {
 
 .card-game__image-container img {
     object-fit: contain;
+}
+
+.login-pagina-bg {
+    background-color: var(--appleblue);
+
+
+}
+
+.login-container {
+    height: 92.5vh;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+
+.login-image {
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+
+    object-fit: cover;
+}
+
+.login-container-left {
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+
+
+}
+
+.register-container-left {
+    display: flex;
+
+
+
+
+
+}
+
+.login-container-right,
+.register-container-right {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+    width: 60%;
+}
+
+.form-login-container,
+.form-register-container {
+
+    background-color: rgba(198, 179, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    height: 50%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-bottom: 100px;
+    margin-top: -100px;
+}
+
+.form-login-container input,
+.form-register-container input {
+
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: var(--purple);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-register-container h2 {
+
+    margin-bottom: 50px;
+    padding-top: 25px;
+
+}
+
+.form-login-container h2 {
+
+    margin-bottom: 50px
+}
+
+.register-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
 }
