@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'over_mij',
+        'is_admin'
     ];
 
     /**
@@ -56,5 +58,10 @@ class User extends Authenticatable
     public function purchasesAsBuyer()
     {
         return $this->hasMany(Sell::class, 'koper_id');
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }

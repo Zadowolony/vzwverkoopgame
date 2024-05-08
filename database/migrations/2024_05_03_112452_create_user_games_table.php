@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignId('platform_id')->constrained('platforms')->onDelete('cascade');
             $table->enum('status', ['te koop', 'verkocht', 'niet te koop']);
             $table->enum('conditie', ['goede conditie', 'slechte conditie', 'nog verpakt']);
-            $table->foreignId('koper_id')->constrained('users')->onDelete('cascade')->nullable();
+            // $table->foreignId('koper_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->unsignedBigInteger('koper_id')->nullable();
+            $table->text('beschrijving')->nullable();
             $table->dateTime('verkoopdatum');
             $table->decimal('prijs', 8, 2);
             $table->timestamps();

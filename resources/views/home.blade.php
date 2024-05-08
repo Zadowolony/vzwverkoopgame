@@ -21,8 +21,14 @@
 
 
                             <div class="relative  ">
-                                <input class="home-search-input  " type="text">
-                                <i class="fa-solid fa-magnifying-glass fa-glass-absolute"></i>
+                                <form action="{{ route('games') }}" method="GET">
+                                    <div class="relative">
+                                        <input class="home-search-input" type="text" name="search"
+                                            placeholder="Zoek een spel">
+                                        <button type="submit"
+                                            class="fa-solid fa-magnifying-glass fa-glass-absolute"></button>
+                                    </div>
+                                </form>
 
                             </div>
 
@@ -38,13 +44,13 @@
 
             </section>
 
-            <section class="uitleg-section ">
+            <section class="uitleg-section m-b-50 p-t-50 ">
 
 
                 <div class="container">
-                    <div class="text-left p-t-40 p-b-20">
+                    <div class="text-left p-t-40 p-b-50">
 
-                        <h2>Doneer games en steun het doel</h2>
+                        <h2>Verkoop je games een steun het doel.</h2>
 
                     </div>
 
@@ -111,7 +117,7 @@
                 </div>
             </section>
 
-            <section class="game-home-section ">
+            {{-- <section class="game-home-section ">
 
                 <div class="relative">
                     <div class="container">
@@ -232,12 +238,129 @@
 
                 </div>
 
-            </section>
+            </section> --}}
+
+
+
+            <div class="container m-b-50 m-t-50 ">
+                <div class="m-b-50 m-t-50">
+                    <h2>Games</h2>
+                </div>
+                <div class="row col-12 ">
+                    @forelse ($games as $game)
+                        <div class="row col-6 col-xs-6 col-md-3"
+                            onclick="location.href='{{ route('game.show', $game->id) }}'">
+                            <div class="game-card col-12 bg-appleblue">
+                                <div>
+                                    <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}">
+                                </div>
+                                <div class="game-card-info">
+                                    <h2>{{ $game->titel }}</h2>
+
+                                    @if ($game->platforms->isNotEmpty())
+                                        <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
+                                    @else
+                                        <p>Geen platform gespecificeerd</p>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </div>
+                    @empty
+                        <p>No games available at the moment.</p>
+                    @endforelse
+                </div>
+                <div class="col-12 flex justify-end">
+
+                    <div class="p-b-50 p-t-50">
+                        <img id="arrow-next" onclick="location.href='{{ route('games') }}'" src="images/retro-arrows.png"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="p-t-50 p-b-50">
+                    <h2>Evenementen</h2>
+                </div>
+                <div class="row p-b-50">
+                    <div class="row flex  col-12 event-card-container ">
+
+                        <div class="event-card col-8 col-xs-4  col-md-3">
+                            <div class="event-foto col-12">
+
+                            </div>
+
+                            <div class=" event-card-text-box p-t-25">
+                                <h2 class="p-b-25">Event Titel</h2>
+                                <p>Dit is een beschrijving van een event op die dag</p>
+                            </div>
+
+                        </div>
+
+                        <div class="event-card col-8 col-xs-4  col-md-3">
+                            <div class="event-foto col-12">
+
+                            </div>
+
+                            <div class=" event-card-text-box p-t-25">
+                                <h2 class="p-b-25">Event Titel</h2>
+                                <p>Dit is een beschrijving van een event op die dag</p>
+                            </div>
+
+                        </div>
+
+                        <div class="event-card col-8 col-xs-4  col-md-3">
+                            <div class="event-foto col-12">
+
+                            </div>
+
+                            <div class=" event-card-text-box p-t-25">
+                                <h2 class="p-b-25">Event Titel</h2>
+                                <p>Dit is een beschrijving van een event op die dag</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-full bg-purple">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                            <div
+                                class="niewsbrief-section flex flex-column align-items-center justify-center col-12 p-t-50">
+                                <h2 class="p-b-15">Schrijf je in voor nieuwsbrief</h2>
+                                <p>Wees op de hoogte van onze aanbod en drops over welke impcat je hebt gedaan.</p>
+                            </div>
+                            <div class="form-nieuwsbrief-container row col-12 ">
+                                <form action="" method="post" class="row col-7 ">
+                                    <div class="row col-12 flex justify-between">
+                                        <input class="row col-5" type="text" name="voornaam" placeholder="voornaam">
+                                        <input class="row col-5" type="text" name="achternaam"
+                                            placeholder="achternaam">
+                                    </div>
+                                    <div class="row col-12">
+                                        <input class="row col-12" type="email" name="email" placeholder="email">
+                                    </div>
+                                    <div>
+                                        <button type="submit">verstuur</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     @endsection
 
 
 
 </body>
+
+
 
 </html>

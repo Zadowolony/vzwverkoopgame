@@ -9,6 +9,8 @@ class Platform extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['platform_naam'];
+
     public function games()
     {
         return $this->belongsToMany(Game::class, 'game_platforms');

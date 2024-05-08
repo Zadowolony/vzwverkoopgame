@@ -1,4 +1,4 @@
-@import 'functions', 'mixins', 'flex', 'button', 'text', 'laravel';
+@import 'functions', 'mixins', 'flex', 'button', 'text', 'laravel', 'verkoop', 'colors', 'cards', 'forms', 'footer';
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
@@ -22,8 +22,15 @@
     padding: 0 20px;
 }
 
+.container-full {
+    width: 100%;
+    margin: auto;
+
+}
+
 body {
     overflow-x: hidden;
+    margin: 0px;
 }
 
 img {
@@ -31,6 +38,13 @@ img {
     height: auto;
 }
 
+.h-50 {
+    height: 50dvh;
+}
+
+.h-100 {
+    height: 100lvh;
+}
 
 .row {
     display: flex;
@@ -42,7 +56,6 @@ img {
 :root {
 
     --purple: #C6B3FF;
-
     --yellow: #F8FFA7;
     --appleblue: #D4FBEB;
     --lYellow: #FFF9BE;
@@ -226,6 +239,7 @@ nav a {
 
     text-decoration: none;
     color: black;
+    padding-right: 10px;
 }
 
 nav a:hover {
@@ -278,8 +292,18 @@ nav a:active {
 .fa-glass-absolute {
 
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 0px;
+    top: 0px;
+    padding: 21px 25px;
+    border: 1px solid #C6B3FF;
+    background-color: var(--purple);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    box-shadow: none;
+    color: var(--appleblue);
+
 }
 
 .uitleg-section {
@@ -457,4 +481,62 @@ nav a:active {
     justify-content: center;
     height: 100%;
 
+}
+
+
+.nav-auth {
+    background-color: var(--purple) !important;
+}
+
+.nav-auth a:hover {
+    color: var(--appleblue)
+}
+
+.nav-auth a:active {
+    color: var(--yellow)
+}
+
+.nav-auth a.active {
+    color: var(--appleblue);
+}
+
+.nav-guest {
+    background-color: var(--appleblue);
+}
+
+.nav-guest a.active {
+    color: var(--purple);
+}
+
+#arrow-next {
+    width: 100%;
+    height: 100px;
+}
+
+.game-category a {
+
+    background-color: var(--yellow);
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 15px;
+    color: black;
+    box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.game-category a:hover {
+
+    background-color: var(--purple);
+
+}
+
+.game-category a:active {
+
+    background-color: var(--appleblue);
+    color: var(--purple);
+
+}
+
+.game-category a.active {
+    background-color: var(--purple);
+    color: var(--lYellow);
 }

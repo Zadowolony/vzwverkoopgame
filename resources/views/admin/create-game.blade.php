@@ -6,9 +6,8 @@
         <main>
             <h1>Dit is mijn verkoop create pagina</h1>
 
-            <form action="{{ route('verkoop.update', $game->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.store-game') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
 
                 <div>
 
@@ -26,10 +25,7 @@
                             <label for="titel">Naam van je spel : </label>
                             <input id="titel" type="text" name="titel" value={{ old('titel') }}>
                         </div>
-                        <div>
-                            <label for="beschrijving">Naam van je spel : </label>
-                            <textarea name="beschrijving" id="beschrijving" cols="30" rows="10"></textarea>
-                        </div>
+
                     </div>
 
                     <div>
@@ -42,31 +38,9 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h2>Kenmerken</h2>
-                        <div>
-                            <div>
-                                <label for="conditie">Conditie:</label>
-                                <select id="conditie" name="conditie">
-                                    <option value="goede conditie">In Goede conditie</option>
-                                    <option value="slechte conditie">In slechte conditie</option>
-                                    <option value="Nog Verpakt">Nog Verpakt</option>
 
-                                </select>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Prijs</h2>
-                        <div>
-                            <div>
-                                <label for="prijs ">Prijs:</label>
-                                <input type="number" id="prijs" name="prijs" min="0.01" step="0.01"
-                                    value="{{ old('prijs') }}" required>
-                            </div>
-                        </div>
-                    </div>
+
                     <div>
                         <button type="submit">Sla op</button>
                     </div>

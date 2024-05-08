@@ -67,7 +67,7 @@ class AuthController extends Controller
         //Als persoon succesvol geregistreerd is , komt een flash tekst.
         $request->session()->flash('succes', 'registreren is gelukt (later send email');
 
-        return redirect()->route('login');
+        return redirect()->route('home');
 
     }
 

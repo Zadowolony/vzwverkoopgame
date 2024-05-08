@@ -3,8 +3,9 @@
 <body>
 
     @section('profile-content')
-        <main>
+        <main class="bg-appleblue">
             <h1>Dit is mijn wishlist pagina</h1>
+
         </main>
     @endsection
 

@@ -20,6 +20,7 @@
     @yield('profile-content')
 
 
+    @stack('scripts')
 
 </body>
 

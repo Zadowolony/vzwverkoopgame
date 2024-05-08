@@ -1,0 +1,136 @@
+.footer-container {
+
+
+    flex-direction: column-reverse;
+}
+
+.header-logo-footer {
+
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -70px;
+    right: 0px;
+}
+
+.footer-box {
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (min-width: 576px) {}
+
+
+@media (min-width: 768px) {
+
+    .footer-container {
+
+
+        flex-direction: row;
+    }
+
+    .footer-box {
+        align-items: start;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+.text1 {
+    font-size: 24px;
+}
+
+.text2 {
+    font-size: 50px;
+    color: var(--purple)
+}
+
+.text3 {
+    font-size: 37px;
+}
+
+.footer-title-container {
+
+    width: 220px;
+}
+
+.footer-text-bottom {
+    width: 100%;
+}
+
+.container-fluid {
+    display: flex;
+    width: 100%;
+    /* Ensure it covers full width */
+}
+
+.left-half {
+    background-color: #FFD700;
+    /* Example color: Yellow */
+    width: 50%;
+    height: 100%;
+    /* Adjust height as needed */
+    padding: 20px;
+    /* Example padding */
+}
+
+.right-half {
+    background-color: #6A0DAD;
+    /* Example color: Purple */
+    width: 50%;
+    height: 100%;
+    /* Adjust height as needed */
+    padding: 20px;
+    /* Example padding */
+}
+
+.container-footer-full-bg {
+
+    position: relative;
+    width: 100%;
+
+    /* Adjust based on your content */
+    overflow: hidden;
+
+}
+
+
+.container-footer-full-bg::before,
+.container-footer-full-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    /* Puts the backgrounds behind the content */
+}
+
+.container-footer-full-bg::before {
+    left: 0;
+    background-color: var(--lYellow);
+    /* Yellow background */
+}
+
+.container-footer-full-bg::after {
+    right: 0;
+    background-color: var(--purple);
+    /* Purple background */
+}

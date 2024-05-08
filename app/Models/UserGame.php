@@ -23,4 +23,8 @@ class UserGame extends Model
     {
         return $this->belongsTo(Platform::class);
     }
+
+
+
+
 }

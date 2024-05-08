@@ -1,0 +1,122 @@
+.card-blue {
+
+    background-color: var(--appleblue);
+    border-radius: 25px;
+    padding: 25px;
+
+}
+
+
+.event-card {
+
+    height: 400px;
+    width: 100%;
+    background-color: var(--appleblue);
+    border-radius: 15px;
+    margin: 10px;
+
+}
+
+.event-foto {
+    height: 200px;
+    width: 100%;
+    background-image: url('../../public/images/sfeer-1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.event-card-text-box {
+
+    padding-left: 25px;
+
+}
+
+.event-card-container {
+
+    justify-content: center;
+}
+
+@media (min-width: 576px) {
+    .event-card-container {
+
+        justify-content: center;
+
+    }
+
+    .event-card {
+        width: 300px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .event-card-container {
+
+        justify-content: space-between;
+
+    }
+
+    .event-card {
+        width: 100%;
+    }
+}
+
+
+.game-card {
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+
+    gap: 20;
+    border-radius: 25px;
+
+    margin: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 300px !important;
+    height: auto;
+
+    cursor: pointer;
+}
+
+.game-card img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.game-card-info h2 {
+
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+
+}
+
+.game-card-info {
+
+    padding: 20px;
+
+}
+
+.game-cards-container {
+
+    min-height: 100vh;
+    display: flex;
+    align-items: start;
+    gap: 20;
+
+
+
+
+}
