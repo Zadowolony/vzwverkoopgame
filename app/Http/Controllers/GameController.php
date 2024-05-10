@@ -13,13 +13,21 @@ class GameController extends Controller
 
         $category = $request->input('category');
 
-        $games = Game::with('userGames.user', 'platforms')
-                     ->when($category, function ($query, $category) {
-
-                         return $query->whereHas('platforms', function ($q) use ($category) {
-                             $q->where('platform_naam', $category);
-                         });
-                        })->get();
+        $games = Game::with(['platforms', 'userGames' => function ($query) {
+            $query->join('users', 'user_games.user_id', '=', 'users.id')
+                  ->select('user_games.*', 'users.name as user_name')
+                  ->orderBy('prijs', 'asc')
+                  ->limit(3);
+        }])
+        ->when($category, function ($query, $category) {
+            return $query->whereHas('platforms', function ($q) use ($category) {
+                $q->where('platform_naam', $category);
+            });
+        })
+        ->whereDoesntHave('userGames', function ($query) {
+            $query->where('user_id', Auth::id());
+        })
+        ->get();
 
         return view('games', [
             'games' => $games,

@@ -4,33 +4,42 @@
     @section('content')
         <main class="bg-appleblue">
             <div class="container-full bg-yellow">
-                <div class="container gameshow-container h-50 align-items-center flex">
-                    <div class="row">
-                        <div class="col-6">
+                <div class="container container-show-game row col-12">
+
+                    <div class="col-12 col-md-6 flex flex-column align-items-start p-t-50 ">
+                        <div class="p-b-25">
+                            <h2>{{ $game->titel }}</h2>
+
+                        </div>
+
+                        <div class="col-8 ">
                             <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}">
                         </div>
-                        <div class="col-6 flex justify-start align-items-center">
-                            <p>{{ $game->beschrijving }}</p>
+                        <div>
+                            <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
                         </div>
                     </div>
+                    <div class="col-12 col-md-6">
+
+
+                        <div class="col-12">
+                            <h2 class="p-b-20">Verkopers :</h2>
+                            @foreach ($userGames as $index => $userGame)
+                                <div class="game-verkopers-tabel {{ $index % 2 == 0 ? 'bg-appleblue' : 'bg-yellow' }}">
+                                    <h3>{{ $userGame->user->name }}</h3>
+                                    <p>€{{ $userGame->prijs }}</p>
+                                    <p>{{ $userGame->conditie }}</p>
+                                    <button>Kopen</button>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
-            <div class="container bg-appleblue">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Aanbiedingen voor deze game</h2>
-                        @foreach ($userGames as $userGame)
-                            <div class="flex align-items-center justify-between col-12 p-b-20">
-                                <h3>{{ $userGame->user->name }}</h3>
-                                <p>€{{ $userGame->prijs }}</p>
-                                <p>{{ $userGame->conditie }}</p>
-                                <button>Kopen</button>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+
         </main>
     @endsection
 </body>

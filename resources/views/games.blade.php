@@ -25,24 +25,28 @@
                     </div>
                     <div class="row col-12 game-cards-container ">
                         @forelse ($games as $game)
-                            <div class="row col-6 col-md-3">
+                            <div class="row col-6 col-xs-6 col-md-3">
                                 <div class="game-card col-12 bg-appleblue">
                                     <div>
                                         <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}">
                                     </div>
-                                    <div class="game-card-info">
+                                    <div class="game-card-info relative">
                                         <h2>{{ $game->titel }}</h2>
-
-                                        @forelse ($game->userGames as $userGame)
-                                            <p>€{{ $userGame->prijs }}</p>
-                                        @empty
-                                            <p>Geen verkopers gevonden</p>
-                                        @endforelse
-                                        <p class="p-t-25 p-b-25">
+                                        <p>Verkoper : </p>
+                                        <div class="game-card-kopers-box">
+                                            @forelse ($game->userGames as $userGame)
+                                                <p>{{ $userGame->user->name }} €{{ $userGame->prijs }}</p>
+                                            @empty
+                                                <p>Geen verkopers gevonden</p>
+                                            @endforelse
+                                        </div>
+                                        <p class="p-t-25 p-b-40">
                                             {{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
-                                        <a href="{{ route('game.show', $game->id) }}">
-                                            Meer Info
-                                        </a>
+                                        <div class="game-category ">
+                                            <a class="game-card-link " href="{{ route('game.show', $game->id) }}">
+                                                Meer Info
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

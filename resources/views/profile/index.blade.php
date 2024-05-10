@@ -3,39 +3,44 @@
 <body>
 
     @section('profile-content')
-        <main>
+        <main class="bg-appleblue profile-index">
 
-            <div class="container h-50">
-                <div class="row col-12">
+            <div class="container  flex justify-center align-items-center row col-12">
+                <div class="row   profile-box  ">
 
-                    <div class=" col-6 justify-center">
-                        <div class="col-12   flex-column align-items-center">
-                            <h1>Dit is profile home pagina</h1>
-                            <p>Welcome
-                            <p>{{ Auth::user()->name }}</p>
-                            </p>
-                            @if (Auth::user()->profile_picture)
-                                <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile Picture"
-                                    style="width: 150px; height: 150px;">
-                            @else
-                                <p>No profile picture available.</p>
-                            @endif
-                        </div>
+                    <div class=" col-12 col-md-6 profile-box-image-name ">
+
+
+                        <h1 class="">Welcome <span class="profile-name">{{ Auth::user()->name }}</span></h1>
+
+
+
+                        @if (Auth::user()->profile_picture)
+                            <img class="profile-image" src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                alt="Profile Picture" style="width: 150px; height: 150px;">
+                        @else
+                            <p><img src="../images/logo.png" alt="No user Image"></p>
+                        @endif
+
+
                     </div>
 
-                    <div class="flex col-6 align-contnet-center justify-center flex-column">
-                        <div class="profil-beschrijving m-b-50">
+                    <div class="col-12 col-md-6 profile-box-beschrijving ">
+                        <div class="profil-beschrijving ">
                             <p>{{ Auth::user()->over_mij }}</p>
                         </div>
 
-                        <div class="flex flex-column">
-                            <a href="{{ route('profile.edit') }}" class="button">Bewerk mijn profiel</a>
-                            <a href="#" class="button">Doe een donatie</a>
-                            <a href="{{ route('verkoop.create') }}" class="button">Verkoop een spel</a>
-                            @if (auth()->user()->isAdmin())
-                                <a href="#">Voeg Event toe</a>
-                                <a href="{{ route('admin.create-game') }}">Voeg een game toe</a>
-                            @endif
+                        <div class=" profil-links row col-12 m-t-25 ">
+                            <div class="row justify-around gap20">
+                                <a class="col-5 " href="{{ route('profile.edit') }}" class="button">Bewerk mijn
+                                    profiel</a>
+                                <a class="col-5" href="#" class="button">Doe een donatie</a>
+                                <a class="col-5" href="{{ route('verkoop.create') }}" class="button">Verkoop een spel</a>
+                                @if (auth()->user()->isAdmin())
+                                    <a class="col-5" href="#">Voeg Event toe</a>
+                                    <a class="col-5" href="{{ route('admin.create-game') }}">Voeg een game toe</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -43,46 +48,45 @@
 
             </div>
 
-            <div class="container  ">
-                <div>
-                    <h2>Mijn Games</h2>
-                    <p>Hier komen games die ik verkoop</p>
+            <div class="container ">
+                <div class=" p-b-50 p-t-50 ">
+                    <h2>Games die ik verkoop</h2>
+
                 </div>
 
-                <div class="row col-12">
+                <div class="row col-12 event-card-container p-b-50 flex justify-center ">
 
                     @if ($games)
-                        @foreach ($games as $game)
-                            <div class="row">
-                                <div class="verkoop-card col-4">
-                                    <a href="{{ route('verkoop.show', $game->game->id) }}">
+                        <div class="row flex col-12 justify-center">
+                            @foreach ($games as $game)
+                                <a href="{{ route('verkoop.show', $game->game->id) }}">
+                                    <div class=" game-card full-card-link  bg-yellow ">
 
 
-                                        <img src="{{ asset('storage/' . $game->game->foto) }}" alt="Profile Picture">
+                                        <div><img src="{{ asset('storage/' . $game->game->foto) }}" alt="Profile Picture">
+                                        </div>
 
-                                        <div>
+                                        <div class="game-card-info">
                                             <h3>{{ $game->game->titel }}</h3>
+                                            {{-- <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p> --}}
                                             <p>{{ $game->prijs }}</p>
 
 
                                         </div>
-                                    </a>
-                                </div>
-                        @endforeach
-                    @else
-                        <p>Geen spellen te koop.</p>
+                                </a>
+                        </div>
+                    @endforeach
+                @else
+                    <p>Geen spellen te koop.</p>
                     @endif
 
                 </div>
 
 
             </div>
-            </div>
 
-            <div class="container h-50">
-                <h2>Mijn wishlist</h2>
-                <p>Hier komen de games van mijn wishlist</p>
-            </div>
+
+
         </main>
     @endsection
 

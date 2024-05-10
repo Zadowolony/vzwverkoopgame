@@ -18,6 +18,7 @@
 
     @include('layouts.includes.header')
     @yield('profile-content')
+    @include('layouts.includes.footer')
 
 
     @stack('scripts')

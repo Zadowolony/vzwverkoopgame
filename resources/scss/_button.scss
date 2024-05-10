@@ -7,30 +7,27 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+
+    background-color: var(--yellow);
 }
 
-// Color variations
-$colors: (
-    primary: #C6B3FF,
-    secondary: #F8FFA7,
-    success: #28a745,
-    danger: #dc3545,
-    warning: #ffc107
-);
+button:hover {
 
+    background-color: var(--purple);
+    color: var(--yellow);
 
-
-@each $name, $color in $colors {
-    .button-#{$name} {
-        background-color: $color;
-        color: black;
-
-        &:hover {
-            background-color: darken($color, 10%);
-
-        }
-    }
 }
+
+button:active {
+
+    background-color: var(--appleblue);
+    color: var(--purple);
+
+}
+
+
+
+
 
 // Size variations
 .button-small {
@@ -70,19 +67,5 @@ $colors: (
     .button-large {
         padding: 25px 40px;
         font-size: 1.6rem;
-    }
-}
-
-// Additional styles like outline buttons
-@each $name, $color in $colors {
-    .button-outline-#{$name} {
-        background-color: transparent;
-        border: 2px solid $color;
-        color: $color;
-
-        &:hover {
-            background-color: $color;
-            color: #fff;
-        }
     }
 }

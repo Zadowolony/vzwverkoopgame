@@ -84,6 +84,7 @@ class ProfileController extends Controller
             // 'email' => 'required|email|unique:users'
             'email' => [
                 'required',
+                'confirmed',
                 Rule::unique('users')->ignore($user->id),
             ],
         ]);
@@ -102,6 +103,7 @@ class ProfileController extends Controller
         $request->validate([
             'password' => [
                 'required',
+                'confirmed',
                 Rule::unique('users')->ignore($user->id),
 
             ],

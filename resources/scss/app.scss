@@ -1,4 +1,4 @@
-@import 'functions', 'mixins', 'flex', 'button', 'text', 'laravel', 'verkoop', 'colors', 'cards', 'forms', 'footer';
+@import 'functions', 'mixins', 'flex', 'button', 'text', 'laravel', 'verkoop', 'colors', 'cards', 'forms', 'footer', 'profile';
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
@@ -539,4 +539,30 @@ nav a:active {
 .game-category a.active {
     background-color: var(--purple);
     color: var(--lYellow);
+}
+
+.container-show-game {
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+
+    gap: 20;
+
+}
+
+.container-show-game img {
+
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+
+
+}
+
+.game-verkopers-tabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 30px;
 }

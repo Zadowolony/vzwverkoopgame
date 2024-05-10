@@ -8,7 +8,9 @@ span {
 }
 
 p,
-a {
+a,
+label,
+::placeholder {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
 }
