@@ -35,6 +35,7 @@ class VerkoopController extends Controller
 
             'game_id' => 'required|exists:games,id',
             'beschrijving' => 'required',
+            'platform_naam' =>'required',
             'conditie' => 'required',
             'prijs' => 'required|numeric',
             'Status' => 'required|in:te koop,verkocht,niet te koop',

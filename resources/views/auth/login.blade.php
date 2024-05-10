@@ -46,17 +46,24 @@
                         <form action="{{ route('login.post') }}" method="post" novalidate>
                             @csrf
                             <div>
-                                <input name="email" type="email" placeholder="email" value="{{ old('email') }}">
+                                <label for="email">Login met je email:</label>
+                                <input id="email" name="email" type="email" placeholder="email"
+                                    value="{{ old('email') }}">
                                 @error('email')
-                                    <p>{{ $message }}</p>
+                                    <div class="error-box">
+                                        <p>{{ $message }}</p>
+                                    </div>
                                 @enderror
                             </div>
 
                             <div>
+                                <label for="password"> Jouw wachtwoord:</label>
                                 <input name="password" type="password" placeholder="password" value="{{ old('password') }}">
 
                                 @error('password')
-                                    <p>{{ $message }}</p>
+                                    <div class="error-box">
+                                        <p>{{ $message }}</p>
+                                    </div>
                                 @enderror
                             </div>
 

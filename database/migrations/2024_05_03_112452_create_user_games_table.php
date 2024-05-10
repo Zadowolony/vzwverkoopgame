@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->foreignId('platform_id')->constrained('platforms')->onDelete('cascade');
-            $table->enum('status', ['te koop', 'verkocht', 'niet te koop']);
-            $table->enum('conditie', ['goede conditie', 'slechte conditie', 'nog verpakt']);
-            // $table->foreignId('koper_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->enum('status', ['te koop', 'verkocht']);
+            $table->enum('conditie', ['nieuw', 'zo goed als nieuw', 'gebruikt', 'niet werkend', 'nog verpakt']);
+
             $table->unsignedBigInteger('koper_id')->nullable();
             $table->text('beschrijving')->nullable();
             $table->dateTime('verkoopdatum');

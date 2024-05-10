@@ -31,7 +31,7 @@
                         </div>
 
                         <div class=" profil-links row col-12 m-t-25 ">
-                            <div class="row justify-around gap20">
+                            <div class="row justify-around gap20 align-items-center">
                                 <a class="col-5 " href="{{ route('profile.edit') }}" class="button">Bewerk mijn
                                     profiel</a>
                                 <a class="col-5" href="#" class="button">Doe een donatie</a>

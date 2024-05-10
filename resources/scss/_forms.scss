@@ -3,6 +3,11 @@
     font-size: 54px;
 }
 
+.verkoop-h1 {
+
+    font-size: 62px;
+}
+
 .form-nieuwsbrief-container {
 
     display: flex;
@@ -27,6 +32,11 @@
 
     margin-bottom: 25px;
     margin-top: 25px;
+}
+
+.edit-profil-box label {
+
+    padding-bottom: 10px;
 }
 
 input {
@@ -61,6 +71,18 @@ input[type="file"]::-webkit-file-upload-button {
     cursor: pointer;
 }
 
+.profile_picture-button::-webkit-file-upload-button {
+
+    background-color: var(--lYellow) !important;
+    color: var(--purple) !important;
+}
+
+.profile_picture-button::-webkit-file-upload-button:hover {
+
+    background-color: var(--purple) !important;
+    color: var(--lYellow) !important;
+}
+
 input[type="file"]::-webkit-file-upload-button:hover {
     background-color: var(--appleblue);
     color: var(--purple);
@@ -68,4 +90,16 @@ input[type="file"]::-webkit-file-upload-button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+select {
+
+    background-color: var(--lYellow);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+
+
+
+
 }

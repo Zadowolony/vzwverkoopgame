@@ -37,38 +37,53 @@
                                 novalidate>
                                 @csrf
                                 <div class="col-7">
-                                    <input name="name" type="text" placeholder="Kies je usernaam..."
-                                        value="{{ old('name') }}">
+                                    <label for="name">Kies een Gebruikersnaam:</label>
+                                    <input name="name" type="text" id="name"
+                                        placeholder="Kies je gebruikersnaam..." value="{{ old('name') }}">
                                     @error('name')
-                                        <p>{{ $message }}</p>
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @enderror
                                 </div>
                                 <div>
                                     <label for="profile_picture">Kies een profielfoto:</label>
-                                    <input type="file" id="profile_picture" name="profile_picture">
+                                    <input class="profile_picture-button" type="file" id="profile_picture"
+                                        name="profile_picture">
                                     @error('profile_picture')
-                                        <p>{{ $message }}</p>
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @enderror
                                 </div>
                                 <div>
-                                    <input name="email" type="email" placeholder="Email adress"
+                                    <label for="email">Kies een email:</label>
+                                    <input name="email" type="email" placeholder="Email adress" id="email"
                                         value="{{ old('email') }}">
                                     @error('email')
-                                        <p>{{ $message }}</p>
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @enderror
                                 </div>
                                 <div>
+                                    <label for="name">Kies een wachtwoord:</label>
                                     <input name="password" type="password" placeholder="wachtwoord"
                                         value="{{ old('password') }}">
                                     @error('password')
-                                        <p>{{ $message }}</p>
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @enderror
                                 </div>
                                 <div>
-                                    <input name="password_confirmation" type="password_confirmation"
+                                    <label for="name">Herhaal je wachtwoord:</label>
+                                    <input name="password_confirmation" type="password"
                                         placeholder="Confirmeer je wachtwoord">
                                     @error('password_confirmation')
-                                        <p>{{ $message }}</p>
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                     @enderror
                                 </div>
                                 <div>
