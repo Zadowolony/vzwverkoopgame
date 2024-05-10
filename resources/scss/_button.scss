@@ -69,3 +69,39 @@ button:active {
         font-size: 1.6rem;
     }
 }
+
+
+
+.buy-btn {
+
+    margin-top: 25px;
+    width: 100% !important;
+}
+
+.button {
+
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+
+    background-color: var(--yellow);
+    color: black;
+    font-size: 14px;
+}
+
+.button:hover {
+    background-color: var(--purple);
+    color: var(--yellow);
+}
+
+.delete-btn {
+
+    background-color: red;
+    color: var(--appleblue)
+}

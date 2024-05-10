@@ -88,33 +88,23 @@ class VerkoopController extends Controller
     {
         //hetzelfde benadering als store
         $request->validate([
-            'titel' => 'required|max:255',
-            'beschrijving' => 'required',
-            'platform_naam' => 'required',
-            'foto' => 'nullable|image|max:2048',
+
+            'beschrijving' => 'nullable',
             'conditie' => 'required',
             'prijs' => 'required|numeric'
         ]);
 
         $game = Game::findOrFail($id);
-        $game->titel = $request->titel;
-        $game->beschrijving = $request->beschrijving;
+        // $game->titel = $request->titel;
+        // $game->beschrijving = $request->beschrijving;
 
-        if ($request->hasFile('foto')) {
-            // Verwijder oude foto indien nodig
-            if ($game->foto) {
-                Storage::delete('public/games/' . $game->foto);
-            }
-            $path = $request->file('foto')->store('public/games');
-            $game->foto = str_replace('public/', '', $path);
-        }
 
-        $game->save();
+        // $game->save();
 
-        // Je zou kunnen checken of het platform is gewijzigd en zo ja, het bijwerken.
-        $platform = Platform::firstOrCreate(['platform_naam' => $request->platform_naam]);
-        // Gebruik sync om de relatie te herstellen.
-        $game->platforms()->sync([$platform->id]);
+        // // Je zou kunnen checken of het platform is gewijzigd en zo ja, het bijwerken.
+        // $platform = Platform::firstOrCreate(['platform_naam' => $request->platform_naam]);
+        // // Gebruik sync om de relatie te herstellen.
+        // $game->platforms()->sync([$platform->id]);
 
         $userGame = UserGame::where('game_id', $game->id)->first(); // Aannemend dat er maar één is per game.
         if ($userGame) {
@@ -130,6 +120,14 @@ class VerkoopController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+     public function delete($id){
+        $game = Game::findOrFail($id);
+        return view('verkoop.delete', [
+            'game' => $game
+        ]);
+     }
+
     public function destroy(string $id)
     {
         //Hier moet ik niet enkel game delete maar ook de andere tabellen.

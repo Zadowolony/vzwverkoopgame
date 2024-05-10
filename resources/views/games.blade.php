@@ -32,6 +32,7 @@
                                     </div>
                                     <div class="game-card-info relative">
                                         <h2>{{ $game->titel }}</h2>
+
                                         <p>Verkoper : </p>
                                         <div class="game-card-kopers-box">
                                             @forelse ($game->userGames as $userGame)

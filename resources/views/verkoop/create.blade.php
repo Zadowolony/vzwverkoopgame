@@ -8,6 +8,7 @@
                 <div class="row ">
                     <div class="col-12">
                         <h1 class="p-t-50 p-b-25 verkoop-h1">Verkoop je spel</h1>
+
                     </div>
 
                     <form class="edit-profil-form row col-12" action="{{ route('verkoop.store') }}" method="post">

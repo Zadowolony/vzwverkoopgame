@@ -3,75 +3,83 @@
 <body>
 
     @section('profile-content')
-        <main>
-            <h1>Dit is mijn verkoop create pagina</h1>
-
-            <form action="{{ route('verkoop.update', $game->id) }}" method="post" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-
-                <div>
-
-                    <div>
-                        <div>
-                            <label id="platform_naam" for="platform_naam">Welke categorie kies je:</label>
-                            <select id="platform_naam" name="platform_naam">
-                                <option value="retro">Retro</option>
-                                <option value="ps4">PS4</option>
-                                <option value="xbox_one">Xbox One</option>
-                                <option value="pc">PC</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="titel">Naam van je spel : </label>
-                            <input id="titel" type="text" name="titel" value={{ old('titel') }}>
-                        </div>
-                        <div>
-                            <label for="beschrijving">Naam van je spel : </label>
-                            <textarea name="beschrijving" id="beschrijving" cols="30" rows="10"></textarea>
-                        </div>
+        <main class="bg-appleblue">
+            <div class="container">
+                <div class="row container-show-game col-12">
+                    <div class="col-12 col-md-5">
+                        <h1 class="text-purple">Update:</h1>
+                        <h2>{{ $game->titel }}</h2>
+                        {{ $game->userGames->first()->beschrijving }}
                     </div>
 
-                    <div>
-                        <h2>Foto's</h2>
-                        <div>
-                            <div>
-                                <label for="foto">Kies een cover:</label>
-                                <input type="file" id="foto" name="foto">
+                    <div class="col-12 col-md-6 flex justify-center ">
+                        <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}" style="width: 300px;">
+                    </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Kenmerken</h2>
-                        <div>
-                            <div>
-                                <label for="conditie">Conditie:</label>
-                                <select id="conditie" name="conditie">
-                                    <option value="goede conditie">In Goede conditie</option>
-                                    <option value="slechte conditie">In slechte conditie</option>
-                                    <option value="Nog Verpakt">Nog Verpakt</option>
 
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2>Prijs</h2>
-                        <div>
-                            <div>
-                                <label for="prijs ">Prijs:</label>
-                                <input type="number" id="prijs" name="prijs" min="0.01" step="0.01"
-                                    value="{{ old('prijs') }}" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit">Sla op</button>
-                    </div>
                 </div>
-            </form>
+            </div>
+
+            <div class="container padding-con">
+                <form action="{{ route('verkoop.update', $game->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <div>
+
+                        <div class="row gap10 col-12">
+
+                            <div class="edit-profil-box flex flex-column col-8">
+                                <label for="beschrijving">Werk je beschrijving bij : </label>
+                                <textarea name="beschrijving" id="beschrijving" cols="30" rows="10">{{ old('beschrijving', $game->userGames->first()->beschrijving) }}</textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2>Kenmerken</h2>
+                            <div class="row gap10 col-12">
+                                <div class="edit-profil-box flex flex-column col-8">
+                                    <label for="conditie">Conditie:</label>
+                                    <select id="conditie" name="conditie" value="{{ old('conditie') }}">
+                                        <option value="Nieuw">Nieuw</option>
+                                        <option value="Zo Goed Als Nieuw">Zo Goed Als Nieuw</option>
+                                        <option value="Gebruikt">Gebruikt</option>
+                                        <option value="Niet werkend">Niet Werkend</option>
+                                        <option value="Nog verpakt">Nog Verpakt</option>
+
+
+                                    </select>
+                                    @error('conditie')
+                                        <div class="error-box">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                    @enderror
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2>Prijs</h2>
+                            <div class="row gap10 col-12">
+                                <div class="edit-profil-box flex flex-column col-4">
+                                    <label for="prijs ">Prijs:</label>
+                                    <input type="number" id="prijs" name="prijs" min="0.01" step="0.01"
+                                        value="{{ old('prijs') }}" required>
+                                </div>
+                                @error('prijs')
+                                    <div class="error-box">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Sla op</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </main>
     @endsection
 

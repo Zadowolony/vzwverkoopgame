@@ -25,6 +25,15 @@ class Game extends Model
         return $this->hasMany(UserGame::class);
     }
 
+    public function isOwnedByUser($userId)
+    {
+        // This checks if any associated user-game pair has the given user ID.
+        return $this->userGames->any(function($ug) use ($userId) {
+            return $ug->user_id === $userId;
+        });
+    }
+
+
 
 
 }

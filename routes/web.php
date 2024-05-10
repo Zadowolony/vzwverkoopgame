@@ -63,8 +63,9 @@ Route::put('/profile/edit/password', [ProfileController::class, 'updatePassword'
 
 Route::post('/verkopen', [VerkoopController::class, 'store'])->name('verkoop.store')->middleware('auth');
 Route::get('/verkopen/create', [VerkoopController::class, 'create'])->name('verkoop.create')->middleware('auth');
-Route::get('verkopen/{id}', [VerkoopController::class, 'show'])->name('verkoop.show')->middleware('auth');
+Route::get('verkopen/{id}', [VerkoopController::class, 'show'])->name('verkoop.show');
 Route::put('/verkopen/{id}', [VerkoopController::class, 'update'])->name('verkoop.update')->middleware('auth');
+Route::get('/verkopen/{id}/delete', [VerkoopController::class, 'delete'])->name('verkoop.delete')->middleware('auth');
 Route::delete('/verkopen/{id}', [VerkoopController::class, 'destroy'])->name('verkoop.destroy')->middleware('auth');
 Route::get('/verkopen/{id}/edit', [VerkoopController::class, 'edit'])->name('verkoop.edit')->middleware('auth');
 

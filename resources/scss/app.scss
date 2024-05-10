@@ -19,7 +19,13 @@
 .container {
     max-width: 1140px;
     margin: auto;
-    padding: 0 20px;
+    padding: 0px 20px;
+}
+
+.padding-con {
+
+    padding: 25px 20px;
+
 }
 
 .container-full {
@@ -43,7 +49,7 @@ img {
 }
 
 .h-100 {
-    height: 100lvh;
+    min-height: 100vh;
 }
 
 .row {
@@ -543,19 +549,26 @@ nav a:active {
 
 .container-show-game {
 
-    min-height: 100vh;
+
+    padding: 100px 25px;
+    gap: 50px;
+    min-height: 50vh;
+
     display: flex;
     align-items: center;
 
-    gap: 20;
+}
 
+.container-show-game h2 {
+    padding-bottom: 25px;
 }
 
 .container-show-game img {
 
     width: 100%;
-    height: 400px;
+
     object-fit: contain;
+    border-radius: 25px;
 
 
 }
@@ -565,4 +578,28 @@ nav a:active {
     align-items: center;
     justify-content: space-around;
     padding: 15px 30px;
+}
+
+.game_category_console {
+
+    background-color: var(--purple);
+    padding: 10px 5px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.game_titel h1 {
+    font-size: 37px;
+    padding-top: 25px;
+}
+
+.button-box {
+
+
+    display: flex;
+    gap: 25px;
+    padding: 50px 2px;
+
 }
