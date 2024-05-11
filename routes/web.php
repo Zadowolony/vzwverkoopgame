@@ -47,7 +47,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 //Als je logged in bent
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('verified');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('verified');;
 
 
 // Als je ingelogd bent de gewone paginas
@@ -98,24 +98,23 @@ Route::get('/profile/wishlist', [WishListController::class, 'wishlist'])->name('
 Route::post('/profile/add-to-wishlist/{gameId}', [WishListController::class, 'addToWishlist'])->name('wishlist.add')->middleware('verified');
 Route::delete('/profile/wishlist/{gameId}/remove', [WishListController::class, 'removeFromWishlist'])->name('wishlist.remove')->middleware('verified');
 
-Auth::routes(['verify' => true]);
+
 
 // email verificatie
 
+
+
+// Email Verification Routes
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
-
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
-    return redirect('/home');
+    return redirect('/profile');
 })->middleware(['auth', 'signed'])->name('verification.verify');
-
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
-    return redirect('/home')->with('message', 'Verification link sent!');
+    return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');

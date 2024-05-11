@@ -9,20 +9,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyEmail extends Mailable
+class CustomVerifyEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $verificationUrl;
-    public $userName;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($verificationUrl, $userName)
+    public function __construct()
     {
-        $this->verificationUrl = $verificationUrl;
-        $this->userName = $userName;
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class VerifyEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verify Email',
+            subject: 'Custom Verify Email',
         );
     }
 
@@ -41,7 +37,7 @@ class VerifyEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.verify',
+            view: 'view.name',
         );
     }
 
@@ -55,15 +51,9 @@ class VerifyEmail extends Mailable
         return [];
     }
 
-  // App\Mail\VerifyEmail
-  public function build()
+    public function build()
     {
-        return $this->subject('Verify Your Email Address')
-                    ->view('emails.verify')
-                    ->with([
-                        'verificationUrl' => $this->verificationUrl,
-                        'userName' => $this->userName
-                    ]);
+        return $this->view('emails.customVerify')
+                    ->subject('Verify Your Email Address');
     }
-
 }

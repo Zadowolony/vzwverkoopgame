@@ -105,3 +105,21 @@ button:active {
     background-color: red;
     color: var(--appleblue)
 }
+
+.verify-btn {
+
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+
+    background-color: var(--yellow);
+    color: black;
+    font-size: 14px;
+
+}

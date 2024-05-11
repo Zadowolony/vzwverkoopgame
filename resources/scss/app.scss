@@ -617,3 +617,13 @@ nav a:active {
     background: var(--placeholder-image-url) center center no-repeat;
     background-size: cover;
 }
+
+.mail-container {
+    background-color: var(--appleblue);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+}
