@@ -33,6 +33,11 @@ class Game extends Model
         });
     }
 
+    public function wishlistedBy()
+    {
+        return $this->belongsToMany(User::class, 'wishlist_items', 'game_id', 'user_id')->withTimestamps();
+    }
+
 
 
 

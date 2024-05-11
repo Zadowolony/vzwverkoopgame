@@ -1,6 +1,13 @@
 @extends('layouts.default')
 
 <body>
+
+    @php
+        $gameCount = count($games); // Bepaal het aantal games
+        $colClass = $gameCount === 1 ? 'col-md-6' : 'col-md-3'; // Conditioneel de kolomklasse instellen
+    @endphp
+
+
     @section('content')
         <main class="bg-main-1 ">
 
@@ -30,11 +37,11 @@
                                     <div>
                                         <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}">
                                     </div>
-                                    <div class="game-card-info relative">
+                                    <div class="game-card-info relative col-12 ">
                                         <h2>{{ $game->titel }}</h2>
 
                                         <p>Verkoper : </p>
-                                        <div class="game-card-kopers-box">
+                                        <div class="game-card-kopers-box ">
                                             @forelse ($game->userGames as $userGame)
                                                 <p>{{ $userGame->user->name }} €{{ $userGame->prijs }}</p>
                                             @empty

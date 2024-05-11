@@ -2,8 +2,9 @@
 
 <body>
 
+
     @section('profile-content')
-        <main class="bg-appleblue profile-index">
+        <main class=" bg-appleblue profile-index">
 
             <div class="container  flex justify-center align-items-center row col-12">
                 <div class="row   profile-box  ">
@@ -48,44 +49,67 @@
 
             </div>
 
-            <div class="container ">
-                <div class=" p-b-50 p-t-50 ">
-                    <h2>Games die ik verkoop</h2>
+            <div class="container-full bg-purple">
+                <div class="container ">
+                    <div class="row col-12">
+                        <div class=" p-b-50 p-t-50 col-12 ">
+                            <h2>Games die ik verkoop</h2>
 
-                </div>
-
-                <div class="row col-12 event-card-container p-b-50 flex justify-center ">
-
-                    @if ($games)
-                        <div class="row flex col-12 justify-center">
-                            @foreach ($games as $game)
-                                <a href="{{ route('verkoop.show', $game->game->id) }}">
-                                    <div class=" game-card full-card-link  bg-yellow ">
-
-
-                                        <div><img src="{{ asset('storage/' . $game->game->foto) }}" alt="Profile Picture">
-                                        </div>
-
-                                        <div class="game-card-info">
-                                            <h3>{{ $game->game->titel }}</h3>
-                                            {{-- <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p> --}}
-                                            <p>{{ $game->prijs }}</p>
-
-
-                                        </div>
-                                </a>
                         </div>
-                    @endforeach
-                @else
-                    <p>Geen spellen te koop.</p>
-                    @endif
+
+                        <div class=" p-b-50  ">
+
+
+                            <div class="row flex justify-between">
+                                @forelse ($sellingGames as $game)
+                                    @include('profile.layouts.includes.game-card')
+                            </div>
+                        </div>
+
+                    @empty
+                        <p>Geen spellen te koop.</p>
+                        @endforelse
+
+                    </div>
+
 
                 </div>
-
-
+            </div>
             </div>
 
 
+
+            <div class="container-full bg-appleblue">
+                <div class="container ">
+                    <div class="row p-b-50">
+                        <div class="col-12 p-t-50 p-b-25">
+                            <h2>Gekochte games</h2>
+                        </div>
+                        @forelse ($purchasedGames as $game)
+                            @include('profile.layouts.includes.game-card')
+                        @empty
+                            <p>Geen gekochte games gevonden.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="container-full bg-purple">
+                <div class="container ">
+                    <div class="row p-b-50">
+                        <div class="col-12 p-t-50 p-b-25">
+                            <h2>Games die ik verkocht heb.</h2>
+                        </div>
+                        @forelse ($soldGames as $game)
+                            @include('profile.layouts.includes.game-card')
+                        @empty
+                            <p>Geen verkochte games gevonden.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
 
         </main>
     @endsection

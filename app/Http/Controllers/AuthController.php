@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -63,6 +64,10 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->profile_picture =  $path;
         $user->save();
+
+        // email versturen met verificatie
+        event(new Registered($user));
+        $user->sendEmailVerificationNotification();
 
         //Als persoon succesvol geregistreerd is , komt een flash tekst.
         $request->session()->flash('succes', 'registreren is gelukt (later send email');

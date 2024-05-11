@@ -9,7 +9,9 @@
                     <div class="col-12 col-md-5">
                         <h1 class="text-purple">Update:</h1>
                         <h2>{{ $game->titel }}</h2>
-                        {{ $game->userGames->first()->beschrijving }}
+                        @if ($game->userGames->isNotEmpty())
+                            <p>{{ $game->userGames->first()->beschrijving }}</p>
+                        @endif
                     </div>
 
                     <div class="col-12 col-md-6 flex justify-center ">

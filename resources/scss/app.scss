@@ -16,6 +16,8 @@
 
 }
 
+
+
 .container {
     max-width: 1140px;
     margin: auto;
@@ -29,8 +31,9 @@
 }
 
 .container-full {
-    width: 100%;
+    width: 100% !important;
     margin: auto;
+
 
 }
 
@@ -49,7 +52,7 @@ img {
 }
 
 .h-100 {
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .row {
@@ -65,6 +68,8 @@ img {
     --yellow: #F8FFA7;
     --appleblue: #D4FBEB;
     --lYellow: #FFF9BE;
+
+    --placeholder-image-url: url('{{ asset("images/logo.png") }}');
 }
 
 
@@ -602,4 +607,13 @@ nav a:active {
     gap: 25px;
     padding: 50px 2px;
 
+}
+
+#preview {
+    border: 2px dashed #ccc;
+    padding: 10px;
+    display: block;
+    object-fit: contain;
+    background: var(--placeholder-image-url) center center no-repeat;
+    background-size: cover;
 }

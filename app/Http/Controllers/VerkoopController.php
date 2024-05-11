@@ -160,4 +160,20 @@ class VerkoopController extends Controller
     }
 
 
+    public function buy($id)
+{
+    $userGame = UserGame::findOrFail($id);
+    if ($userGame->status === 'te koop') {
+        $userGame->status = 'verkocht';
+        $userGame->koper_id = auth()->id(); // Zet de huidige gebruiker als koper
+        $userGame->verkoopdatum = now(); // Stel de huidige datum in als verkoopdatum
+        $userGame->save();
+
+        return redirect()->route('profile')->with('success', 'Je hebt het spel succesvol gekocht!');
+    }
+
+    return back()->with('error', 'Dit spel is niet beschikbaar voor verkoop.');
+}
+
+
 }

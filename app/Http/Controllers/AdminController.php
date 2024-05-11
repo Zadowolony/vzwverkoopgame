@@ -8,22 +8,29 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
     public function index(){
-        return view('admin.create-game');
+
+         $game = new Game();
+        return view('admin.create-game', [
+            'game' => $game
+        ]);
     }
+
 
     public function storeGame(Request $request) {
 
         $request->validate([
             'titel' => 'required|max:255',
             'foto' => 'required|image|max:2048',
-            'beschrijving' => 'nullable',
+            'game_beschrijving' => 'required',
             'platform_naam' => 'required',
 
         ]);
 
         $game = new Game();
         $game->titel = $request->titel;
+        $game->game_beschrijving = $request->game_beschrijving;
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('public/games');
             $game->foto = str_replace('public/', '', $path);

@@ -36,8 +36,8 @@
                             <a href="{{ route('wishlist') }}"
                                 class="{{ request()->is('profile/wishlist') ? 'active' : '' }}">WHISHLIST</a>
 
-                            <a href="{{ route('mijn-verkoop') }}"
-                                class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a>
+                            {{-- <a href="{{ route('mijn-verkoop') }}"
+                                class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a> --}}
                             <a href="{{ route('logout') }}">UITLOGGEN</a>
                         </div>
 

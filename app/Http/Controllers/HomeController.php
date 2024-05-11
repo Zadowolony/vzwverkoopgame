@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
     public function home(Request $request) {
 
-
+        //serach inputveld
+        $search = $request->input('search');
 
 
         $games = Game::with('userGames.user', 'platforms')
@@ -20,7 +21,8 @@ class HomeController extends Controller
 
 
         return view('home', [
-            'games' => $games
+            'games' => $games,
+            'search' => $search
         ]);
     }
 

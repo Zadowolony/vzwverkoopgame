@@ -20,6 +20,25 @@
                             <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
                         </div>
 
+                        @if (auth()->check())
+                            @php
+                                $isOnWishlist = DB::table('wishlist_items')
+                                    ->where('user_id', auth()->id())
+                                    ->where('game_id', $game->id)
+                                    ->exists();
+                            @endphp
+
+                            @if (!$isOnWishlist)
+                                <form action="{{ route('wishlist.add', $game->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="game_id" value="{{ $game->id }}">
+                                    <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+                                </form>
+                            @else
+                                <button class="btn btn-secondary" disabled>Already on Wishlist</button>
+                            @endif
+                        @endif
+
 
                     </div>
 

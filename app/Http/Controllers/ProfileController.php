@@ -4,31 +4,43 @@ namespace App\Http\Controllers;
 
 use Log;
 use App\Models\Game;
+use App\Models\User;
 use App\Models\UserGame;
 use Illuminate\Http\Request;
+use App\Mail\GameAvailableMail;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ProfileController extends Controller
 {
     public function index(){
-        $userId = Auth::id(); // Zorg ervoor dat de gebruiker is ingelogd
+        // Zorg ervoor dat de gebruiker is ingelogd
+        $userId = Auth::id();
 
-    // Ophalen van alle spellen die de gebruiker verkoopt
-    $games = UserGame::with('game', 'platform')
-                     ->where('user_id', $userId)
-                     ->get();
+        // Ophalen van alle spellen die de gebruiker verkoopt
+        $sellingGames = UserGame::with('game', 'platform')
+                                ->where('user_id', $userId)
+                                ->where('status', 'te koop') // Zorg ervoor dat alleen spellen die nog te koop zijn, getoond worden
+                                ->get();
 
+        // Ophalen van alle spellen die de gebruiker gekocht heeft
+        $purchasedGames = UserGame::with('game', 'platform')
+                                  ->where('koper_id', $userId)
+                                  ->where('status', 'verkocht') // Zorg ervoor dat alleen verkochte spellen getoond worden
+                                  ->get();
 
+        $soldGames = UserGame::with('game', 'platform')
+                                  ->where('user_id', $userId)
+                                  ->where('status', 'verkocht')
+                                  ->get();
 
-    // Zorg ervoor dat je data doorstuurt naar de view
-    return view('profile.index', compact('games'));
+        // Zorg ervoor dat je data doorstuurt naar de view
+        return view('profile.index', compact('sellingGames', 'purchasedGames', 'soldGames'));
     }
 
-    public function wishlist() {
-        return view('profile.wishlist');
-    }
 
     public function mijnVerkoop() {
 
@@ -116,4 +128,7 @@ class ProfileController extends Controller
         return redirect()->route('profile');
 
     }
+
+
+
 }

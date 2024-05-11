@@ -8,7 +8,7 @@
             @endphp
 
 
-            <div class="container container-show-game">
+            <div class="container container-show-game h-100">
 
                 <div class="row">
 
@@ -94,10 +94,13 @@
                         </div>
 
                         <div class="col-8 p-t-15 buy-btn-box">
-                            @if (!$userIsOwner)
-                                <button class="buy-btn" onclick="location.href='#'">Koop het
-                                    spel</button>
+                            @if (!$userIsOwner && $game->userGames->first()->status === 'te koop')
+                                <form action="{{ route('verkoop.buy', $game->userGames->first()->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="buy-btn">Koop het spel</button>
+                                </form>
                             @endif
+
                         </div>
 
                     </div>
@@ -109,41 +112,7 @@
             </div>
 
 
-            {{-- <div class="container ">
-                <div class="">
 
-
-                    @if (auth()->user() && $userIsOwner)
-                        <div class="container">
-                            <div class=" row">
-                                <div class="col-12 ">
-                                    <div class="col-12">
-                                        <h2>Mijn Instellingen</h2>
-                                    </div>
-                                    <div class="button-box">
-                                        <button onclick="location.href='{{ route('verkoop.edit', $game->id) }}">Edit
-                                            Game</button>
-
-                                        <form action="{{ route('verkoop.destroy', $game->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="button">Verwijder een spel</button>
-                                        </form>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-
-                <div class="rox">
-                    <div class="col-12">
-
-                    </div>
-                </div>
-            </div> --}}
 
 
 

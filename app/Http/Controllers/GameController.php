@@ -13,6 +13,8 @@ class GameController extends Controller
 
         $category = $request->input('category');
 
+        $search = $request->input('search');
+
         $games = Game::with(['platforms', 'userGames' => function ($query) {
             $query->join('users', 'user_games.user_id', '=', 'users.id')
                   ->select('user_games.*', 'users.name as user_name')
@@ -24,14 +26,17 @@ class GameController extends Controller
                 $q->where('platform_naam', $category);
             });
         })
-        ->whereDoesntHave('userGames', function ($query) {
-            $query->where('user_id', Auth::id());
+        // Zoek op titel of aanpassen naar wens
+        ->when($search, function ($query, $search) {
+            return $query->where('titel', 'like', '%' . $search . '%');
         })
+
         ->get();
 
         return view('games', [
             'games' => $games,
-            'selectedCategory' => $category
+            'selectedCategory' => $category,
+            'search' => $search
         ]);
 
     }
