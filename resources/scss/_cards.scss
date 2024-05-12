@@ -68,21 +68,16 @@
 
 .game-card {
 
-
     display: block;
     flex-direction: column;
-
-
-
     border-radius: 25px;
-    background-color: var(--lYellow);
 
     margin: 10px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 
-
     cursor: pointer;
+    position: relative;
 }
 
 .game-card img {
@@ -142,6 +137,20 @@
     gap: 20px;
 
     padding: 10px;
+}
+
+.game-card-button-more-info {
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-size: 14px;
+    gap: 20px;
+    padding: 10px;
+
+
 }
 
 .full-card-link a {

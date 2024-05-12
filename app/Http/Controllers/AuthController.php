@@ -26,8 +26,15 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
+        // if(Auth::attempt($validated)){
+        //     return redirect()->intended(route('profile'));
+        // }
+
         if(Auth::attempt($validated)){
-            return redirect()->intended(route('profile'));
+            if (!Auth::user()->hasVerifiedEmail()) {
+                return redirect()->route('verification.notice');
+            }
+            return redirect()->route('profile');
         }
 
         return back()->withErrors([

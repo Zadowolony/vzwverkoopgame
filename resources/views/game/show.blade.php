@@ -55,17 +55,21 @@
                         <div class="col-12">
                             <h2 class="p-b-20">Verkopers :</h2>
                             @foreach ($userGames as $index => $userGame)
-                                <div class="game-verkopers-tabel {{ $index % 2 == 0 ? 'bg-appleblue' : 'bg-yellow' }}">
-                                    <h3>{{ $userGame->user->name }}</h3>
-                                    <p>€{{ $userGame->prijs }}</p>
-                                    <p>{{ $userGame->conditie }}</p>
-                                    <button onclick="location.href='{{ route('verkoop.show', $game->id) }}'">Kopen</button>
-                                </div>
-                            @endforeach
-                        </div>
+                                @if ($userGame->status === 'te koop')
+                                    <div class="game-verkopers-tabel {{ $index % 2 == 0 ? 'bg-appleblue' : 'bg-yellow' }}">
+                                        <h3>{{ $userGame->user->name }}</h3>
+                                        <p>€{{ $userGame->prijs }}</p>
+                                        <p>{{ $userGame->conditie }}</p>
 
+                                        <button
+                                            onclick="location.href='{{ route('verkoop.show', $game->id) }}'">Kopen</button>
+                                @endif
+                        </div>
+                        @endforeach
                     </div>
+
                 </div>
+            </div>
             </div>
 
 

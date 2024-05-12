@@ -42,7 +42,13 @@
 
                                         <p>Verkoper : </p>
                                         <div class="game-card-kopers-box ">
-                                            @forelse ($game->userGames as $userGame)
+                                            @php
+                                                $teKoopUserGames = $game->userGames
+                                                    ->where('status', 'te koop')
+                                                    ->take(3); // Neem alleen de eerste drie 'te koop'
+                                            @endphp
+
+                                            @forelse ($teKoopUserGames as $userGame)
                                                 <p>{{ $userGame->user->name }} €{{ $userGame->prijs }}</p>
                                             @empty
                                                 <p>Geen verkopers gevonden</p>
@@ -50,8 +56,9 @@
                                         </div>
                                         <p class="p-t-25 p-b-40">
                                             {{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
-                                        <div class="game-category ">
-                                            <a class="game-card-link " href="{{ route('game.show', $game->id) }}">
+                                        <div class="game-category  ">
+                                            <a class="game-card-button-more-info "
+                                                href="{{ route('game.show', $game->id) }}">
                                                 Meer Info
                                             </a>
                                         </div>
