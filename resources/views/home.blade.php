@@ -5,7 +5,7 @@
     @section('content')
         <main class="bg-main-1">
 
-            <section class="hero-section">
+            <section class="hero-section relative">
                 <div class="container">
                     <div class="row flex-column align-items-center justify-center container-height col-12 ">
                         <div class="col-10 col-xl-12 text-center ">
@@ -18,7 +18,9 @@
                             </div>
 
 
-
+                            <div class="parallax hero-image1">
+                                <!-- The parallax effect background for the first image -->
+                            </div>
 
                             <div class="relative  ">
                                 <form action="{{ route('games') }}" method="GET">
@@ -32,11 +34,46 @@
 
                             </div>
 
+                            <div class="parallax hero-image2">
+                                <!-- The parallax effect background for the second image -->
+                            </div>
+
                         </div>
                         <div class="m-t-40">
                             <button class="button-secondary button-small">doe een donatie</button>
                         </div>
                     </div>
+
+                    {{-- <div class="row col-12 image-hero-container">
+                        <img class="hero-img console-1  " id="heroImage" src="{{ asset('images/console-1.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-2 " id="heroImage2" src="{{ asset('images/console-2.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-3 " id="heroImage2" src="{{ asset('images/console-3.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-4  " id="heroImage2" src="{{ asset('images/console-4.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-5  " id="heroImage2" src="{{ asset('images/console-5.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-6  " id="heroImage2" src="{{ asset('images/console-6.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-7  " id="heroImage2" src="{{ asset('images/console-7.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-8  " id="heroImage2" src="{{ asset('images/console-8.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-9 d-none  " id="heroImage2" src="{{ asset('images/console-9.png') }}"
+                            alt="Console Image">
+                        <img class="hero-img console-10 d-none  " id="heroImage2"
+                            src="{{ asset('images/console-10.png') }}" alt="Console Image">
+                        <img class="hero-img console-11 d-none  " id="heroImage2"
+                            src="{{ asset('images/console-11.png') }}" alt="Console Image">
+                        <img class="hero-img console-12 d-none  " id="heroImage2"
+                            src="{{ asset('images/console-12.png') }}" alt="Console Image">
+                        <img class="hero-img console-13 d-none  " id="heroImage2"
+                            src="{{ asset('images/console-13.png') }}" alt="Console Image">
+                        <img class="hero-img console-14 d-none  " id="heroImage2"
+                            src="{{ asset('images/console-14.png') }}" alt="Console Image">
+                    </div> --}}
 
 
                 </div>

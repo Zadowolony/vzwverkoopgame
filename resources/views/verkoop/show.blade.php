@@ -5,6 +5,7 @@
         <main class="bg-appleblue">
             @php
                 $userIsOwner = $game->userGames->pluck('user_id')->contains(auth()->id());
+                $saleUserGame = $game->userGames->firstWhere('status', 'te koop');
             @endphp
 
 
@@ -93,15 +94,16 @@
                             </div>
                         </div>
 
-                        <div class="col-10 p-t-15 buy-btn-box ">
-                            @if (!$userIsOwner && $game->userGames->first()->status === 'te koop')
-                                <form action="{{ route('verkoop.buy', $game->userGames->first()->id) }}" method="POST">
+
+                        @if ($saleUserGame && !$userIsOwner)
+                            <div class="col-10 p-t-15 buy-btn-box">
+                                <form action="{{ route('verkoop.buy', $saleUserGame->id) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="buy-btn">Koop het spel</button>
                                 </form>
-                            @endif
+                            </div>
+                        @endif
 
-                        </div>
 
                     </div>
 

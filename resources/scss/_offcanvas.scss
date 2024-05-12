@@ -1,0 +1,54 @@
+.offcanvas {
+    // Verander de achtergrondkleur indien nodig
+    color: #333; // Verander de tekstkleur indien nodig
+}
+
+.offcanvas-header {
+    // Specifieke stijlen voor de kop van het off-canvas menu
+}
+
+.offcanvas-body {
+    // Specifieke stijlen voor het body-gedeelte van het off-canvas menu
+}
+
+.mobile-hamburger-button {
+
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0px;
+}
+
+.mobile-hamburger-button:hover {
+
+    background-color: transparent;
+}
+
+.nav-mobile a {
+
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+
+
+    justify-content: flex-start;
+    padding-left: 100px;
+    line-height: 3rem;
+    color: black;
+
+
+}
+
+.nav-mobile a:hover {
+
+    color: var(--lYellow)
+}
+
+.btn-close {
+
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 25px;
+    color: black;
+}
