@@ -16,17 +16,19 @@
 
 
 
-                        @if (Auth::user()->profile_picture)
-                            <img class="profile-image" src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
-                                alt="Profile Picture" style="width: 150px; height: 150px;">
-                        @else
-                            <p><img src="../images/logo.png" alt="No user Image"></p>
-                        @endif
+                        <div class="col-5 col-md-8">
+                            @if (Auth::user()->profile_picture)
+                                <img class="profile-image" src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                    alt="Profile Picture" style="width: 150px; height: 150px;">
+                            @else
+                                <p><img src="../images/logo.png" alt="No user Image"></p>
+                            @endif
+                        </div>
 
 
                     </div>
 
-                    <div class="col-12 col-md-6 profile-box-beschrijving ">
+                    <div class="col-12 col-md-6 profile-box-beschrijving m-b-50">
                         <div class="profil-beschrijving ">
                             <p>{{ Auth::user()->over_mij }}</p>
                         </div>
@@ -50,32 +52,26 @@
             </div>
 
             <div class="container-full bg-purple">
-                <div class="container ">
-                    <div class="row col-12">
-                        <div class=" p-b-50 p-t-50 col-12 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 p-t-50 p-b-50">
                             <h2>Games die ik verkoop</h2>
-
                         </div>
 
-                        <div class=" p-b-50  ">
 
-
-                            <div class="row flex justify-between">
-                                @forelse ($sellingGames as $game)
-                                    @include('profile.layouts.includes.game-card')
-                            </div>
+                        <div class="row col-12 p-b-50">
+                            @forelse ($sellingGames as $game)
+                                @include('profile.layouts.includes.game-card')
+                            @empty
+                                <div class="col-12 p-b-50">
+                                    <p>Geen spellen te koop.</p>
+                                </div>
+                            @endforelse
                         </div>
-
-                    @empty
-                        <p>Geen spellen te koop.</p>
-                        @endforelse
-
                     </div>
-
-
                 </div>
             </div>
-            </div>
+
 
 
 
@@ -85,11 +81,13 @@
                         <div class="col-12 p-t-50 p-b-25">
                             <h2>Gekochte games</h2>
                         </div>
-                        @forelse ($purchasedGames as $game)
-                            @include('profile.layouts.includes.game-card')
-                        @empty
-                            <p>Geen gekochte games gevonden.</p>
-                        @endforelse
+                        <div class="row col-12 p-b-50">
+                            @forelse ($purchasedGames as $game)
+                                @include('profile.layouts.includes.game-card')
+                            @empty
+                                <p>Geen gekochte games gevonden.</p>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,11 +115,13 @@
                         <div class="col-12 p-t-50 p-b-25">
                             <h2>Wishlist</h2>
                         </div>
-                        @forelse ($wishlistGames as $game)
-                            @include('profile.layouts.includes.game-card')
-                        @empty
-                            <p>Geen games in de wishlist gevonden.</p>
-                        @endforelse
+                        <div class="row col-12  ">
+                            @forelse ($wishlistGames as $game)
+                                @include('profile.layouts.includes.wishlist-card', ['game' => $game])
+                            @empty
+                                <p>Geen games in de wishlist gevonden.</p>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>

@@ -33,9 +33,9 @@ class Game extends Model
         });
     }
 
-    public function wishlistedByUsers()
+    public function wishlistUsers()
     {
-        return $this->belongsToMany(User::class, 'wishlist_items', 'wishlist', 'game_id', 'user_id');
+        return $this->belongsToMany(User::class, 'wishlist_items', 'game_id', 'user_id');
     }
 
 

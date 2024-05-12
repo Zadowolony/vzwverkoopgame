@@ -61,23 +61,5 @@ class GameController extends Controller
         ]);
     }
 
-    // public function markAsForSale($gameId){
 
-    //     $game = Game::findOrFail($gameId);
-    //     $game->status = 'te koop';
-    //     $game->save();
-
-    //     // Wij gaan controleren of het spel opd e wishlist staat.
-
-    //     $wishlistUsers = DB::table('wishlist_items')
-    //                         ->where('game_id', $gameId)
-    //                         ->pluck('user_id');
-
-    //     foreach($wishlistUsers as $userId) {
-    //         $user = User::find($userId);
-    //         Mail::to($user->email)->send(new GameAvailableMail($game->titel));
-    //     }
-
-    //     return redirect()->back()->with('succes', 'Spel is nu te koop en notificaties zijn verzonden.');
-    // }
 }

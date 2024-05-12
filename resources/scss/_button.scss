@@ -123,3 +123,12 @@ button:active {
     font-size: 14px;
 
 }
+
+.remove-btn {
+
+    box-shadow: none;
+    border: 1px solid red;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: transparent;
+}
