@@ -8,15 +8,15 @@
             @endphp
 
 
-            <div class="container container-show-game h-100">
+            <div class="container h-70 flex flex-column justify-center ">
 
-                <div class="row">
+                <div class="row p-t-50">
 
 
 
-                    <div class="col-12 flex justify-center flex-column col-md-6">
+                    <div class="col-12 col-md-6  ">
 
-                        <div class="col-12 flex justify-center ">
+                        <div class=" ">
                             <img src="{{ asset('storage/' . $game->foto) }}" alt="{{ $game->titel }}" style="width: 300px;">
                         </div>
 
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 p-b-25 col-md-5">
+                    <div class="col-12 p-b-25 col-md-5 flex flex-column justify-center">
                         <div class="col-12 flex justify-center game_titel">
                             <h1>{{ $game->titel }}</h1>
                         </div>
@@ -63,7 +63,7 @@
                             <div class="col-4 flex ">
                                 <p class="p-t-25">Prijs:</p>
                             </div>
-                            <div class="game_category_console col-4 ">
+                            <div class="game_category_console col-6 ">
                                 <p>€{{ $game->userGames->first()->prijs }}</p>
                             </div>
 
@@ -75,7 +75,7 @@
                             <div class="col-4 flex ">
                                 <p class="p-t-25">Conditie :</p>
                             </div>
-                            <div class="game_category_console  ">
+                            <div class="game_category_console  col-6 ">
                                 <p class="p-l-10 p-r-10">{{ $game->userGames->first()->conditie }}</p>
                             </div>
 
@@ -86,14 +86,14 @@
                                 <p class=" p-t-25">Platform:
                                 </p>
                             </div>
-                            <div class="game_category_console col-4 ">
+                            <div class="game_category_console col-6 ">
                                 @foreach ($game->platforms as $platform)
                                     <p>{{ $platform->platform_naam }}</p>
                                 @endforeach
                             </div>
                         </div>
 
-                        <div class="col-8 p-t-15 buy-btn-box">
+                        <div class="col-10 p-t-15 buy-btn-box ">
                             @if (!$userIsOwner && $game->userGames->first()->status === 'te koop')
                                 <form action="{{ route('verkoop.buy', $game->userGames->first()->id) }}" method="POST">
                                     @csrf

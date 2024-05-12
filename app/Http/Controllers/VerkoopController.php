@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\User;
 use App\Models\Platform;
 use App\Models\UserGame;
 use Illuminate\Http\Request;
+use App\Mail\GameAvailableMail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class VerkoopController extends Controller
@@ -41,6 +45,8 @@ class VerkoopController extends Controller
             'Status' => 'required|in:te koop,verkocht,niet te koop',
         ]);
 
+
+
         // Vind de bestaande game gebaseerd op de ingevoerde ID
         $game = Game::findOrFail($request->game_id);
 
@@ -57,6 +63,10 @@ class VerkoopController extends Controller
         $userGame->verkoopdatum = now();
 
         $userGame->save();
+
+        if ($request->Status === 'te koop') {
+            $this->checkAndNotifyWishlist($userGame->game_id);
+        }
 
          return redirect()->route('profile')->with('success', 'Spel succesvol opgeslagen!');
     }
@@ -173,6 +183,26 @@ class VerkoopController extends Controller
     }
 
     return back()->with('error', 'Dit spel is niet beschikbaar voor verkoop.');
+}
+
+private function checkAndNotifyWishlist($gameId)
+{
+
+    // Haal het spel op
+    $game = Game::findOrFail($gameId);
+
+
+    $wishlistUsers = DB::table('wishlist_items')
+                        ->where('game_id', $gameId)
+                        ->pluck('user_id');
+
+    foreach ($wishlistUsers as $userId) {
+        $user = User::find($userId);
+        if ($user) {
+
+            Mail::to($user->email)->send(new GameAvailableMail($game));
+        }
+    }
 }
 
 

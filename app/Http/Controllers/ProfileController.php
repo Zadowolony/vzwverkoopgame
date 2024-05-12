@@ -37,8 +37,10 @@ class ProfileController extends Controller
                                   ->where('status', 'verkocht')
                                   ->get();
 
+                                  $wishlistGames = UserGame::with('game')->where('user_id', $userId)->get();
+
         // Zorg ervoor dat je data doorstuurt naar de view
-        return view('profile.index', compact('sellingGames', 'purchasedGames', 'soldGames'));
+        return view('profile.index', compact('sellingGames', 'purchasedGames', 'soldGames', 'wishlistGames'));
     }
 
 

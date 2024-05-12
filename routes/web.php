@@ -100,7 +100,7 @@ Route::delete('/profile/wishlist/{gameId}/remove', [WishListController::class, '
 
 
 
-// email verificatie
+
 
 
 

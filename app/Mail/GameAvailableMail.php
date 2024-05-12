@@ -2,47 +2,48 @@
 
 namespace App\Mail;
 
+use App\Models\Game;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GameAvailableMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     //titel van het spel
-    public $title;
+    public $game;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($title)
+    public function __construct(Game $game)
     {
-        $this->title = $title;
+        $this->game = $game;
     }
 
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Game Available Mail',
-        );
-    }
+    // public function envelope(): Envelope
+    // {
+    //     return new Envelope(
+    //         subject: 'Game Available Mail',
+    //     );
+    // }
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
+    // /**
+    //  * Get the message content definition.
+    //  */
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'view.name',
+    //     );
+    // }
 
     /**
      * Get the attachments for the message.
@@ -59,7 +60,9 @@ class GameAvailableMail extends Mailable
         return $this->subject('Game Now Available!')
                     ->view('emails.gameAvailable')
                     ->with([
-                        'title' => $this->title
+                        'gameTitle' => $this->game->titel,
+                        'gamePrice' => $this->game->userGames->first()->prijs, // Veronderstelt dat 'userGames' de prijsinformatie bevat
+                        'gameDescription' => $this->game->beschrijving
                     ]);
     }
 }

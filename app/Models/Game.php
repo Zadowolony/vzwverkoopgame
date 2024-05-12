@@ -22,7 +22,7 @@ class Game extends Model
 
     public function userGames()
     {
-        return $this->hasMany(UserGame::class);
+        return $this->hasMany(UserGame::class, 'game_id');
     }
 
     public function isOwnedByUser($userId)
@@ -33,10 +33,12 @@ class Game extends Model
         });
     }
 
-    public function wishlistedBy()
+    public function wishlistedByUsers()
     {
-        return $this->belongsToMany(User::class, 'wishlist_items', 'game_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'wishlist_items', 'wishlist', 'game_id', 'user_id');
     }
+
+
 
 
 

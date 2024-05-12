@@ -1,29 +1,39 @@
 @extends('layouts.default')
 
-@section('title', 'verfification')
+@section('title', 'Email verificatie')
 
 @section('content')
-    <section>
+    <section class="verification-section">
+        <div class="container-full bg-appleblue">
+            <div class="container h-70 flex justify-content-center align-items-center">
+                <div class="row ">
+                    <div class="col-12  text-center justify-center flex">
+                        <div class="col-8">
+                            <h1 class="m-t-25 m-b-25">Bevestig uw emailadres</h1>
+                            <p class="lead mb-3">Bedankt voor uw registratie! Voordat u verder gaat, moet u uw emailadres
+                                bevestigen door op de link te klikken die we naar uw email hebben gestuurd. Als u de email
+                                niet
+                                heeft ontvangen, zullen we u graag een nieuwe sturen.</p>
 
-        <div class="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden">
-            <div class="p-6">
-                <h1 class="text-2xl text-center font-bold text-gray-800 mb-4">Email Verification</h1>
-                <p class="text-gray-700 text-center mb-6">Thank you for registering! To complete your registration, please
-                    verify your email address </p>
-                {{-- <div class="flex justify-center">
-                    <form method="POST" action="{{ route('verification.send') }}">
-                        @csrf
-                        <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Resend</button>
-                    </form>
-                </div> --}}
-                <p class="text-center text-gray-700 mt-4">If you did not create an account, no further action is required.
-                </p>
-            </div>
-            <div class="bg-gray-100 p-4 text-center text-gray-500">
-                <p>&copy; {{ date('Y') }} Awesome Shoestore. All rights reserved.</p>
+                            <div class="verification-info m-t-40 m-b-25">
+                                <form method="POST" action="{{ route('verification.send') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Verstuur verificatie email
+                                        opnieuw</button>
+                                </form>
+                            </div>
+
+                            <div class="help-block mt-4 col-12 flex justify-center">
+                                <div class="col-5  ">
+                                    <p>Als u problemen ondervindt met het verifiëren van uw email, neem dan gerust <a
+                                            href="#">contact</a> met ons op.</p>
+                                    <p>Als u zich niet heeft geregistreerd, negeer dan deze pagina.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </section>
 @endsection

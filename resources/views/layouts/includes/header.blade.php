@@ -30,11 +30,12 @@
                     <nav class="d-none-mobile nav-auth ">
                         <div>
                             <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
+
+                            <a href="{{ route('games') }}" class="{{ request()->is('games') ? 'active' : '' }}">GAMES</a>
                             <a href="{{ route('profile') }}" class="{{ request()->is('profile') ? 'active' : '' }}">MIJN
                                 PROFIEL</a>
-                            <a href="{{ route('games') }}" class="{{ request()->is('games') ? 'active' : '' }}">GAMES</a>
-                            <a href="{{ route('wishlist') }}"
-                                class="{{ request()->is('profile/wishlist') ? 'active' : '' }}">WHISHLIST</a>
+                            {{-- <a href="{{ route('wishlist') }}"
+                                class="{{ request()->is('profile/wishlist') ? 'active' : '' }}">WHISHLIST</a> --}}
 
                             {{-- <a href="{{ route('mijn-verkoop') }}"
                                 class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a> --}}

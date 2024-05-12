@@ -111,6 +111,22 @@
                 </div>
             </div>
 
+            <div class="container-full bg-appleblue">
+                <div class="container ">
+                    <div class="row p-b-50">
+                        <div class="col-12 p-t-50 p-b-25">
+                            <h2>Wishlist</h2>
+                        </div>
+                        @forelse ($wishlistGames as $game)
+                            @include('profile.layouts.includes.game-card')
+                        @empty
+                            <p>Geen games in de wishlist gevonden.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+
+
         </main>
     @endsection
 

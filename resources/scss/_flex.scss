@@ -105,6 +105,10 @@
     gap: 20px;
 }
 
+.gap50 {
+    gap: 50px;
+}
+
 .v-gap5 {
     &>*+* {
         margin-top: 5px;

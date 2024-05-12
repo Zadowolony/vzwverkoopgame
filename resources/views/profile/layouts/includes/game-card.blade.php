@@ -14,7 +14,7 @@
 @php
     $userIsOwner = $game->user_id == auth()->id(); // Correcte check voor eigenaar
 @endphp
-@if ($userIsOwner && $game->status === 'te koop')
+@if ($userIsOwner && $game->status === 'te koop' && $game->isInWishList)
     <div class="row col-12 justify-end gap20">
         <a href="{{ route('verkoop.edit', $game->game->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
         <a href="{{ route('verkoop.delete', $game->game->id) }}"><i class="fa-solid fa-xmark"></i></a>

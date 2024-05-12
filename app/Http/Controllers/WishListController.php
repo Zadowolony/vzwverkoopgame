@@ -39,18 +39,4 @@ class WishListController extends Controller
         return back()->with('success', 'Game removed from your wishlist!');
      }
 
-     public function checkWishlistItems()
-     {
-         $wishlistItems = DB::table('wishlist_items')
-                            ->join('games', 'wishlist_items.game_id', '=', 'games.id')
-                            ->where('games.status', 'te koop')
-                            ->select('wishlist_items.user_id', 'games.titel')
-                            ->get();
-
-                            foreach ($wishlistItems as $item) {
-                                $user = User::find($item->user_id);
-                                Log::info("Sending email to {$user->email} about {$item->titel}.");
-                                Mail::to($user->email)->send(new GameAvailableMail($item->titel));
-                            }
-     }
 }
