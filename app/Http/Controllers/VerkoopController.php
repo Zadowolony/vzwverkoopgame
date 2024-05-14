@@ -138,38 +138,30 @@ class VerkoopController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //hetzelfde benadering als store
+        // Validatie van de invoer
         $request->validate([
-
-            'beschrijving' => 'nullable',
-            'conditie' => 'required',
-            'prijs' => 'required|numeric'
+            'beschrijving' => 'nullable|string',
+            'conditie' => 'required|string',
+            'prijs' => 'required|numeric|min:0',
         ]);
 
-        $game = Game::findOrFail($id);
-        // $game->titel = $request->titel;
-        // $game->beschrijving = $request->beschrijving;
+        // Haal de UserGame op die moet worden bijgewerkt
+        $userGame = UserGame::findOrFail($id);
 
+        // Werk de UserGame eigenschappen bij
+        $userGame->beschrijving = $request->input('beschrijving', $userGame->beschrijving);
+        $userGame->conditie = $request->input('conditie', $userGame->conditie);
+        $userGame->prijs = $request->input('prijs', $userGame->prijs);
 
-        // $game->save();
+        // Sla de wijzigingen op
+        $userGame->save();
 
-        // // Je zou kunnen checken of het platform is gewijzigd en zo ja, het bijwerken.
-        // $platform = Platform::firstOrCreate(['platform_naam' => $request->platform_naam]);
-        // // Gebruik sync om de relatie te herstellen.
-        // $game->platforms()->sync([$platform->id]);
-
-        $userGame = UserGame::where('game_id', $game->id)->first(); // Aannemend dat er maar één is per game.
-        if ($userGame) {
-            $userGame->conditie = $request->conditie;
-            $userGame->prijs = $request->prijs;
-            $userGame->save();
-        }
-
+        // Redirect naar de profielpagina met een succesmelding
         return redirect()->route('profile')->with('success', 'Spel succesvol bijgewerkt!');
-
     }
+
 
     /**
      * Remove the specified resource from storage.
