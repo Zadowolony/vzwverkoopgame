@@ -1,6 +1,8 @@
 @extends('profile.layouts.profile-default')
 
+
 <body>
+    @section('title-profile', 'DonateGames')
     @section('profile-content')
         <main class="bg-appleblue">
             <div class="container flex flex-column justify-center h-100">

@@ -1,4 +1,5 @@
 @extends('profile.layouts.profile-default')
+@section('title-profile', 'Bewerkt Profiel')
 
 @section('profile-content')
     <main class="bg-appleblue ">

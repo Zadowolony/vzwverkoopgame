@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Donatie')
+
 <body>
     @section('content')
         <section class="bg-yellow">

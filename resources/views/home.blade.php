@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 <body>
-    @section('title', 'VerkoopGame')
+    @section('title', 'Home')
     @section('content')
         <main class="bg-main-1">
 

@@ -46,7 +46,7 @@
                             </div>
                             <div class="offcanvas-body">
                                 <!-- Plaats hier je navigatielinks of andere content -->
-                                <div class="flex flex-column nav-mobile">
+                                <div class=" nav-mobile">
                                     <a href="{{ route('home') }}"
                                         class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
                                     <a href="{{ route('games') }}"
@@ -55,7 +55,7 @@
                                         class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a>
                                     <a href="{{ route('login') }}"
                                         class="{{ request()->is('login') ? 'active' : '' }}">INLOGGEN</a>
-                                    <a class="donate-btn" href="{{ route('donate') }}"
+                                    <a class=" btn-mobile-nav" href="{{ route('donate') }}"
                                         class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
                                 </div>
 
@@ -106,7 +106,7 @@
                             </div>
                             <div class="offcanvas-body">
                                 <!-- Plaats hier je navigatielinks of andere content -->
-                                <div class="flex flex-column nav-mobile">
+                                <div class=" nav-mobile">
                                     <a href="{{ route('home') }}"
                                         class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
 
@@ -121,7 +121,7 @@
                                     {{-- <a href="{{ route('mijn-verkoop') }}"
                                         class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a> --}}
                                     <a href="{{ route('logout') }}">UITLOGGEN</a>
-                                    <a class="donate-btn-login" href="{{ route('donate') }}"
+                                    <a class="btn-mobile-nav" href="{{ route('donate') }}"
                                         class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
                                 </div>
 

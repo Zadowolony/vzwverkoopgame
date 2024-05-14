@@ -1,6 +1,6 @@
 @extends('profile.layouts.profile-default')
 
-
+@section('title-profile', 'Gekochte Games')
 
 @section('profile-content')
     <main class="bg-appleblue">

@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 <body>
+    @section('title', 'Login')
 
     @section('content')
         <section class="bg-appleblue">

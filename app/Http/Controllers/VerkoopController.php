@@ -72,40 +72,7 @@ class VerkoopController extends Controller
          return redirect()->route('profile')->with('success', 'Spel succesvol opgeslagen!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    // public function show($id)
-    // {
 
-
-    //     // $game = Game::with(['userGames', 'platforms'])->findOrFail($id);
-
-    //     // $saleUserGames = $game->userGames->where('status', 'te koop');
-
-    //     // $userIsOwner = $game->userGames->pluck('user_id')->contains(auth()->id());
-    //     // $userOwnedGames = $game->userGames->where('user_id', auth()->id());
-
-    //     $game = Game::with(['userGames.user', 'platforms'])->findOrFail($id);
-    // $saleUserGames = $game->userGames->where('status', 'te koop');
-    // $userOwnedGames = $game->userGames->where('user_id', auth()->id())->first(); // Haal de eerste UserGame van de huidige gebruiker op
-
-    // return view('verkoop.show', compact('game', 'saleUserGames', 'userOwnedGames'));
-
-
-    //     //return view('verkoop.show', compact('game', 'saleUserGames', 'userIsOwner', 'userOwnedGames'));
-    // }
-
-    // public function show($userGameId)
-    // {
-    //     $userGame = UserGame::with('user', 'game.platforms')->findOrFail($userGameId);
-
-    //     // Ensure you fetch data such as game information, seller info, etc.
-    //     $game = $userGame->game;  // Access the game associated with this UserGame
-    //     $seller = $userGame->user;  // Access the user who is selling the game
-
-    //     return view('verkoop.show', compact('userGame', 'game', 'seller'));
-    // }
 
     public function show($id)
 {

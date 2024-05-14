@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 <body>
+    @section('title', 'Registreren')
 
     @section('content')
         <main>

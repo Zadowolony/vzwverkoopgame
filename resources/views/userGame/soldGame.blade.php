@@ -1,5 +1,7 @@
 @extends('profile.layouts.profile-default')
 
+@section('title-profile', 'Verkochte Games')
+
 
 
 @section('profile-content')

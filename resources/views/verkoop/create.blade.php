@@ -1,6 +1,7 @@
 @extends('profile.layouts.profile-default')
 
 <body>
+    @section('title-profile', 'Verkoop')
 
     @section('profile-content')
         <main class="bg-appleblue">

@@ -2,6 +2,8 @@
 
 <body>
 
+    @section('title-profile', 'Mijn Profiel')
+
 
     @section('profile-content')
         <main class=" bg-appleblue profile-index">
@@ -37,7 +39,7 @@
                             <div class="row justify-around gap20 align-items-center">
                                 <a class="col-5 " href="{{ route('profile.edit') }}" class="button">Bewerk mijn
                                     profiel</a>
-                                <a class="col-5" href="#" class="button">Doe een donatie</a>
+                                <a class="col-5" href="{{ route('donate') }}" class="button">Doe een donatie</a>
                                 <a class="col-5" href="{{ route('verkoop.create') }}" class="button">Verkoop een spel</a>
                                 @if (auth()->user()->isAdmin())
                                     <a class="col-5" href="#">Voeg Event toe</a>

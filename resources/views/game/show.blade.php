@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Game')
+
 <body>
     @section('content')
         <main class="bg-appleblue">
