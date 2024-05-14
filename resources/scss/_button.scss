@@ -132,3 +132,79 @@ button:active {
     padding: 10px;
     background-color: transparent;
 }
+
+.donate-btn {
+
+    background-color: var(--purple);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, border-radius 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.donate-btn:hover {
+
+    background-color: var(--lYellow);
+    color: black !important;
+
+    border-radius: 0px;
+}
+
+.donate-btn:active {
+
+
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+
+}
+
+.donate-btn-login {
+
+    background-color: var(--appleblue);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, border-radius 0.3s, box-shadow 0.3s, color 0.3s;
+
+
+}
+
+.donate-btn-login:hover {
+
+    background-color: var(--lYellow);
+    color: black !important;
+
+    border-radius: 0px;
+
+}
+
+.donate-btn-login:active {
+
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+
+}
+
+.donate-btn-home {
+
+    padding: 15px 25px;
+    background-color: var(--purple);
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, border-radius 0.3s, box-shadow 0.3s, color 0.3s;
+
+
+}
+
+.donate-btn-home:hover {
+
+    background-color: var(--appleblue);
+    color: black !important;
+
+    border-radius: 0px;
+}
+
+.donate-btn-home:active {
+
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+    color: black !important;
+}

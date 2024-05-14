@@ -10,10 +10,10 @@
                     <div class="row flex-column align-items-center justify-center container-height col-12 ">
                         <div class="col-10 col-xl-12 text-center ">
                             <div class="head-title-home">
-                                <h1 class="">
+                                <h1>
                                     <span class="h1vzw">vzw</span>
-                                    <span class="h1donate">verkoop</span>
-                                    <span class="h1play">game</span>
+                                    <span class="h1donate">donate</span>
+                                    <span class="h1play">games</span>
                                 </h1>
                             </div>
 
@@ -40,40 +40,12 @@
 
                         </div>
                         <div class="m-t-40">
-                            <button class="button-secondary button-small">doe een donatie</button>
+                            <a class="donate-btn-home " href="{{ route('donate') }}"
+                                class="{{ request()->is('donate') ? 'active' : '' }}">DOE EEN DONATIE</a>
                         </div>
                     </div>
 
-                    {{-- <div class="row col-12 image-hero-container">
-                        <img class="hero-img console-1  " id="heroImage" src="{{ asset('images/console-1.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-2 " id="heroImage2" src="{{ asset('images/console-2.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-3 " id="heroImage2" src="{{ asset('images/console-3.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-4  " id="heroImage2" src="{{ asset('images/console-4.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-5  " id="heroImage2" src="{{ asset('images/console-5.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-6  " id="heroImage2" src="{{ asset('images/console-6.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-7  " id="heroImage2" src="{{ asset('images/console-7.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-8  " id="heroImage2" src="{{ asset('images/console-8.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-9 d-none  " id="heroImage2" src="{{ asset('images/console-9.png') }}"
-                            alt="Console Image">
-                        <img class="hero-img console-10 d-none  " id="heroImage2"
-                            src="{{ asset('images/console-10.png') }}" alt="Console Image">
-                        <img class="hero-img console-11 d-none  " id="heroImage2"
-                            src="{{ asset('images/console-11.png') }}" alt="Console Image">
-                        <img class="hero-img console-12 d-none  " id="heroImage2"
-                            src="{{ asset('images/console-12.png') }}" alt="Console Image">
-                        <img class="hero-img console-13 d-none  " id="heroImage2"
-                            src="{{ asset('images/console-13.png') }}" alt="Console Image">
-                        <img class="hero-img console-14 d-none  " id="heroImage2"
-                            src="{{ asset('images/console-14.png') }}" alt="Console Image">
-                    </div> --}}
+
 
 
                 </div>
@@ -154,128 +126,7 @@
                 </div>
             </section>
 
-            {{-- <section class="game-home-section ">
 
-                <div class="relative">
-                    <div class="container">
-                        <div class="p-t-50">
-                            <h2>games</h2>
-                        </div>
-
-                        <div class="row  gap15 game-carousel justify-between">
-                            <div class="card-game ">
-                                <div class="card-game__image-container">
-                                    <img src="images/ps4-god-of-war-ragnarok-standard-game-box-front-GB 1.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-game  ">
-                                <div class="card-game__image-container ">
-                                    <img class=""
-                                        src="images/MP-20-PS2-Games-That-Still-Hold-Up-Today_T0L0K7-V1_480.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-game ">
-                                <div class="card-game__image-container">
-                                    <img class=""
-                                        src="images/MP-20-PS2-Games-That-Still-Hold-Up-Today_T0L0K7-V1_480.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-game">
-                                <div class="card-game__image-container">
-                                    <img src="images/ps4-god-of-war-ragnarok-standard-game-box-front-GB 1.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-game">
-                                <div class="card-game__image-container">
-                                    <img src="images/ps4-god-of-war-ragnarok-standard-game-box-front-GB 1.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-game">
-                                <div class="card-game__image-container">
-                                    <img src="images/ps4-god-of-war-ragnarok-standard-game-box-front-GB 1.png"
-                                        alt="ps4">
-                                </div>
-                                <div class="p-t-10">
-                                    <h3>game van: username</h3>
-
-                                    <div class="p-t-10">
-                                        <p class="uppercase bold">ps4</p>
-                                        <p class="uppercase bold">god of war ragnarok</p>
-                                        <p class="uppercase bold">€25</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </section> --}}
 
 
 
@@ -369,21 +220,22 @@
                         <div class="col-12">
                             <div
                                 class="niewsbrief-section flex flex-column align-items-center justify-center col-12 p-t-50">
-                                <h2 class="p-b-15">Schrijf je in voor nieuwsbrief</h2>
+                                <h2 class="p-b-15 ">Schrijf je in voor nieuwsbrief</h2>
                                 <p>Wees op de hoogte van onze aanbod en drops over welke impcat je hebt gedaan.</p>
                             </div>
                             <div class="form-nieuwsbrief-container row col-12 ">
                                 <form action="" method="post" class="row col-7 ">
                                     <div class="row col-12 flex justify-between">
-                                        <input class="row col-5" type="text" name="voornaam" placeholder="voornaam">
-                                        <input class="row col-5" type="text" name="achternaam"
+                                        <input class="row col-12 col-md-5" type="text" name="voornaam"
+                                            placeholder="voornaam">
+                                        <input class="row col-12 col-md-5" type="text" name="achternaam"
                                             placeholder="achternaam">
                                     </div>
                                     <div class="row col-12">
                                         <input class="row col-12" type="email" name="email" placeholder="email">
                                     </div>
                                     <div>
-                                        <button type="submit">verstuur</button>
+                                        <button type="submit" class="donate-btn-login">verstuur</button>
                                     </div>
                                 </form>
                             </div>

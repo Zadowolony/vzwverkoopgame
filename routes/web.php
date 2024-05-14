@@ -7,10 +7,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DonateController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerkoopController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\GameDetailController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -74,6 +76,12 @@ Route::get('/verkopen/{id}/delete', [VerkoopController::class, 'delete'])->name(
 Route::delete('/verkopen/{id}', [VerkoopController::class, 'destroy'])->name('verkoop.destroy')->middleware('verified');
 Route::get('/verkopen/{id}/edit', [VerkoopController::class, 'edit'])->name('verkoop.edit')->middleware('verified');
 
+Route::post('/verkopen/remove-sale/{id}', [VerkoopController::class, 'removeSale'])
+     ->name('verkoop.remove-sale')
+     ->middleware('verified');
+
+
+
 // Click op button word de status verkocht
 
 Route::post('/verkopen/buy/{id}', [VerkoopController::class, 'buy'])->name('verkoop.buy')->middleware('verified');
@@ -118,3 +126,15 @@ Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+//Donate page
+
+Route::get('/donate', [DonateController::class, 'index'])->name('donate');
+
+
+Route::get('/user/{userId}/game/{gameId}/details/{type}', [GameDetailController::class, 'show'])->name('userGame.details')->middleware('verified');
+
+Route::get('/user/{userId}/game/{gameId}/sold-details', [GameDetailController::class, 'showSoldGame'])
+    ->name('userGame.soldGame')
+    ->middleware('verified');

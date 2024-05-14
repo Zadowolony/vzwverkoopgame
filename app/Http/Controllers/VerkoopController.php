@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Mail\GameAvailableMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -74,21 +75,64 @@ class VerkoopController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show($id)
+    // {
+
+
+    //     // $game = Game::with(['userGames', 'platforms'])->findOrFail($id);
+
+    //     // $saleUserGames = $game->userGames->where('status', 'te koop');
+
+    //     // $userIsOwner = $game->userGames->pluck('user_id')->contains(auth()->id());
+    //     // $userOwnedGames = $game->userGames->where('user_id', auth()->id());
+
+    //     $game = Game::with(['userGames.user', 'platforms'])->findOrFail($id);
+    // $saleUserGames = $game->userGames->where('status', 'te koop');
+    // $userOwnedGames = $game->userGames->where('user_id', auth()->id())->first(); // Haal de eerste UserGame van de huidige gebruiker op
+
+    // return view('verkoop.show', compact('game', 'saleUserGames', 'userOwnedGames'));
+
+
+    //     //return view('verkoop.show', compact('game', 'saleUserGames', 'userIsOwner', 'userOwnedGames'));
+    // }
+
+    // public function show($userGameId)
+    // {
+    //     $userGame = UserGame::with('user', 'game.platforms')->findOrFail($userGameId);
+
+    //     // Ensure you fetch data such as game information, seller info, etc.
+    //     $game = $userGame->game;  // Access the game associated with this UserGame
+    //     $seller = $userGame->user;  // Access the user who is selling the game
+
+    //     return view('verkoop.show', compact('userGame', 'game', 'seller'));
+    // }
+
     public function show($id)
-    {
+{
+    $userGame = UserGame::with('game', 'user', 'buyer')->findOrFail($id);
+    $game = $userGame->game;  // Access the game associated with this UserGame
+    $seller = $userGame->user;  // Access the user who is selling the game
 
+    // Fetch other UserGames that are for sale, excluding the current user's games if necessary
+    $saleUserGames = UserGame::where('game_id', $game->id)
+                              ->where('status', 'te koop')
+                              ->where('user_id', '!=', auth()->id())
+                              ->get();
 
-        $game = Game::with(['userGames', 'platforms'])->findOrFail($id);
-        return view('verkoop.show', compact('game'));
-    }
+    $userOwnedGames = UserGame::where('game_id', $game->id)
+                              ->where('user_id', auth()->id())
+                              ->first();
+
+    return view('verkoop.show', compact('userGame', 'game', 'seller', 'userOwnedGames', 'saleUserGames'));
+}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $game = Game::findOrFail($id);
-        return view('verkoop.edit', ['game' => $game]);
+        $userGame = UserGame::with('game')->findOrFail($id);
+        return view('verkoop.edit', ['userGame' => $userGame]);
     }
 
     /**
@@ -203,6 +247,18 @@ private function checkAndNotifyWishlist($gameId)
             Mail::to($user->email)->send(new GameAvailableMail($game));
         }
     }
+}
+
+public function removeSale($id)
+{
+    $userGame = UserGame::where('id', $id)
+                        ->where('user_id', Auth::id()) // Verzeker dat alleen de eigenaar de verkoop kan stoppen
+                        ->firstOrFail();
+
+    $userGame->status = 'niet te koop'; // Update de status naar 'niet te koop'
+    $userGame->save();
+
+    return redirect()->route('profile')->with('success', 'De verkoop van het spel is gestopt.');
 }
 
 

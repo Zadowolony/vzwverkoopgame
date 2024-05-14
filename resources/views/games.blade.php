@@ -40,16 +40,12 @@
                                     <div class="game-card-info relative col-12 ">
                                         <h2>{{ $game->titel }}</h2>
 
-                                        <p>Verkoper : </p>
+                                        <p class="p-b-5">Verkoper : </p>
                                         <div class="game-card-kopers-box ">
-                                            @php
-                                                $teKoopUserGames = $game->userGames
-                                                    ->where('status', 'te koop')
-                                                    ->take(3); // Neem alleen de eerste drie 'te koop'
-                                            @endphp
-
-                                            @forelse ($teKoopUserGames as $userGame)
-                                                <p>{{ $userGame->user->name }} €{{ $userGame->prijs }}</p>
+                                            @forelse ($game->userGames as $userGame)
+                                                @if ($userGame->status === 'te koop')
+                                                    <p><i>{{ $userGame->user->name }} €{{ $userGame->prijs }}</i></p>
+                                                @endif
                                             @empty
                                                 <p>Geen verkopers gevonden</p>
                                             @endforelse

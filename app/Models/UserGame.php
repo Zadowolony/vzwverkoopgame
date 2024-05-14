@@ -11,7 +11,7 @@ class UserGame extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function game()
@@ -22,6 +22,16 @@ class UserGame extends Model
     public function platform()
     {
         return $this->belongsTo(Platform::class);
+    }
+
+    public function buyer() {
+        return $this->belongsTo(User::class, 'koper_id');
+    }
+
+    public function seller()
+    {
+        // Hier neem ik aan dat er een `user_id` veld is dat de verkoper aanduidt
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 

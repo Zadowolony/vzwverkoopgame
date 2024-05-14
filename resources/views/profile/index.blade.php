@@ -16,7 +16,7 @@
 
 
 
-                        <div class="col-5 col-md-8">
+                        <div class="col-5 col-md-8 flex justify-center">
                             @if (Auth::user()->profile_picture)
                                 <img class="profile-image" src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
                                     alt="Profile Picture" style="width: 150px; height: 150px;">
@@ -60,8 +60,33 @@
 
 
                         <div class="row col-12 p-b-50">
-                            @forelse ($sellingGames as $game)
-                                @include('profile.layouts.includes.game-card')
+                            @forelse ($sellingGames as $userGame)
+                                <div class=" col-6 col-xs-4 col-md-3 ">
+                                    <!-- Each card takes up 3 columns in a 12-column grid, allowing for 4 cards per row -->
+                                    <div class="game-card bg-yellow full-card-link relative ">
+                                        <a href="{{ route('verkoop.show', $userGame->id) }}" class="">
+                                            <img src="{{ asset('storage/' . $userGame->game->foto) }}" alt="Game Image">
+                                            <div class="game-card-info">
+                                                <h3>{{ $userGame->game->titel }}</h3>
+                                                <p>€{{ $userGame->prijs }}</p>
+                                            </div>
+                                        </a>
+
+                                        <div class="flex justify-end align-items-center game-card-link ">
+                                            <a href="{{ route('verkoop.edit', $userGame->id) }}" class="btn btn-primary">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+
+                                            <form method="POST"
+                                                action="{{ route('verkoop.remove-sale', $userGame->id) }}">
+                                                @csrf
+                                                <button type="submit" class=""><i
+                                                        class="fa-solid fa-xmark"></i></button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
                             @empty
                                 <div class="col-12 p-b-50">
                                     <p>Geen spellen te koop.</p>
@@ -82,8 +107,21 @@
                             <h2>Gekochte games</h2>
                         </div>
                         <div class="row col-12 p-b-50">
-                            @forelse ($purchasedGames as $game)
-                                @include('profile.layouts.includes.game-card')
+                            @forelse ($purchasedGames as $userGame)
+                                <div class="col-6 col-xs-4 col-md-3">
+                                    <!-- Each card takes up 3 columns in a 12-column grid, allowing for 4 cards per row -->
+                                    <div class="game-card bg-yellow full-card-link relative">
+                                        <a href="{{ route('userGame.details', ['userId' => auth()->id(), 'gameId' => $userGame->id, 'type' => 'bought']) }}"
+                                            class=" ">
+                                            <img src="{{ asset('storage/' . $userGame->game->foto) }}" alt="Game Image">
+                                            <div class="game-card-info">
+                                                <h3>{{ $userGame->game->titel }}</h3>
+                                                <p>€{{ $userGame->prijs }}</p>
+                                                <!-- Notice here it uses $userGame->prijs -->
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             @empty
                                 <p>Geen gekochte games gevonden.</p>
                             @endforelse
@@ -101,7 +139,21 @@
                             <h2>Games die ik verkocht heb.</h2>
                         </div>
                         @forelse ($soldGames as $game)
-                            @include('profile.layouts.includes.game-card')
+                            <div class=" col-6 col-xs-4 col-md-3 ">
+                                <!-- Each card takes up 3 columns in a 12-column grid, allowing for 4 cards per row -->
+                                <div class="game-card bg-yellow full-card-link relative ">
+                                    <a href="{{ route('userGame.soldGame', ['userId' => auth()->id(), 'gameId' => $game->game->id]) }}"
+                                        class=" ">
+                                        <img src="{{ asset('storage/' . $game->game->foto) }}" alt="Game Image">
+                                        <div class="game-card-info">
+                                            <h3>{{ $game->game->titel }}</h3>
+                                            <p>€{{ $game->prijs }}</p>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+                            </div>
                         @empty
                             <p>Geen verkochte games gevonden.</p>
                         @endforelse

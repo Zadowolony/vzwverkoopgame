@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="edit-profil-box flex flex-column col-8 col-md-5 ">
-                                <label for="game_beschrijving">Naam van het spel : </label>
+                                <label for="game_beschrijving">becshrijving van het spel : </label>
                                 <textarea name="game_beschrijving" id="game_beschrijving" cols="30" rows="10">{{ old('beschrijving', $game->game_beschrijving) }}</textarea>
                             </div>
 

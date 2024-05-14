@@ -41,3 +41,64 @@ a {
 
     text-transform: capitalize;
 }
+
+.donatie-text-h1 {
+
+    font-size: 42px;
+    padding: 25px 0px;
+}
+
+.text-purple {
+
+    color: var(--purple)
+}
+
+.niewsbrief-section h2 {
+
+    font-size: 37px !important;
+}
+
+.login-textbox-1,
+.login-textbox-2 {
+
+    margin-bottom: -25px;
+}
+
+
+.login-text-1 {
+    font-size: 36px;
+
+
+
+}
+
+.login-text-2 {
+    padding-top: 25px;
+    font-size: 40px;
+
+
+}
+
+.login-text-3 {
+    font-size: 72px;
+    color: var(--purple);
+}
+
+.login-text-4 {
+    font-size: 60px;
+}
+
+.login-text-5 {
+    font-size: 50px;
+
+}
+
+
+@media (min-width: 576px) {
+    .niewsbrief-section h2 {
+
+        font-size: 56px !important;
+    }
+
+
+}

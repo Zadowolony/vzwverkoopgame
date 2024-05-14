@@ -1,8 +1,8 @@
 <div class=" col-6 col-xs-4 col-md-3 ">
     <!-- Each card takes up 3 columns in a 12-column grid, allowing for 4 cards per row -->
     <div class="game-card bg-yellow full-card-link relative ">
-        <a href="{{ route('verkoop.show', $game->game->id) }}" class=" ">
-            <img src="{{ asset('storage/' . $game->game->foto) }}" alt="Profile Picture">
+        <a href="{{ route('userGame.details', ['userId' => auth()->id(), 'gameId' => $game->game->id]) }}" class=" ">
+            <img src="{{ asset('storage/' . $game->game->foto) }}" alt="Game Image">
             <div class="game-card-info">
                 <h3>{{ $game->game->titel }}</h3>
                 <p>€{{ $game->prijs }}</p>

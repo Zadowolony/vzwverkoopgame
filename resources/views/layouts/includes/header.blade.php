@@ -12,7 +12,7 @@
 
 
             <div class="col-2 col-md-2">
-                <img class="header-logo" src="../../images/logo.png" alt="">
+                <img class="header-logo" src="{{ asset('images/logo.png') }}" alt="">
             </div>
             <div class="row col-9 justify-end ">
 
@@ -21,8 +21,11 @@
                         <div>
                             <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
                             <a href="{{ route('games') }}" class="{{ request()->is('games') ? 'active' : '' }}">GAMES</a>
-                            <a href="{{ route('events') }}" class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a>
+                            {{-- <a href="{{ route('events') }}" class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a> --}}
                             <a href="{{ route('login') }}" class="{{ request()->is('login') ? 'active' : '' }}">INLOGGEN</a>
+                            <a class="donate-btn" href="{{ route('donate') }}"
+                                class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
+
                         </div>
                     </nav>
                     <div>
@@ -31,26 +34,29 @@
                         <button class="mobile-hamburger-button" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img
                                 class="mobile-menu-appleblue  d-none-tablet m-b-10"
-                                src="../../../images/hamburger-menu-purple.png" alt=""></button>
+                                src="{{ asset('images/hamburger-menu-purple.png') }}" alt=""></button>
 
                         <div class="offcanvas offcanvas-end bg-appleblue" tabindex="-1" id="offcanvasRight"
                             aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasRightLabel"><img class="header-logo"
-                                        src="../../images/logo.png" alt=""></h5>
+                                        src="{{ asset('images/logo.png') }}" alt=""></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close">X</button>
                             </div>
                             <div class="offcanvas-body">
                                 <!-- Plaats hier je navigatielinks of andere content -->
                                 <div class="flex flex-column nav-mobile">
-                                    <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
+                                    <a href="{{ route('home') }}"
+                                        class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
                                     <a href="{{ route('games') }}"
                                         class="{{ request()->is('games') ? 'active' : '' }}">GAMES</a>
                                     <a href="{{ route('events') }}"
                                         class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a>
                                     <a href="{{ route('login') }}"
                                         class="{{ request()->is('login') ? 'active' : '' }}">INLOGGEN</a>
+                                    <a class="donate-btn" href="{{ route('donate') }}"
+                                        class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
                                 </div>
 
                             </div>
@@ -76,6 +82,8 @@
                             {{-- <a href="{{ route('mijn-verkoop') }}"
                                 class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a> --}}
                             <a href="{{ route('logout') }}">UITLOGGEN</a>
+                            <a class="donate-btn-login" href="{{ route('donate') }}"
+                                class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
                         </div>
 
 
@@ -86,13 +94,13 @@
                         <button class="mobile-hamburger-button" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img
                                 class="mobile-menu-appleblue  d-none-tablet m-b-10"
-                                src="../../../images/hamburger-menu-appleblue.png" alt=""></button>
+                                src="{{ asset('images/hamburger-menu-appleblue.png') }}" alt=""></button>
 
                         <div class="offcanvas offcanvas-end bg-purple" tabindex="-1" id="offcanvasRight"
                             aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasRightLabel"><img class="header-logo"
-                                        src="../../images/logo.png" alt=""></h5>
+                                        src="{{ asset('images/logo.png') }}" alt=""></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                     aria-label="Close">X</button>
                             </div>
@@ -113,6 +121,8 @@
                                     {{-- <a href="{{ route('mijn-verkoop') }}"
                                         class="{{ request()->is('profile/mijn-verkoop') ? 'active' : '' }}">MIJN VERKOOP</a> --}}
                                     <a href="{{ route('logout') }}">UITLOGGEN</a>
+                                    <a class="donate-btn-login" href="{{ route('donate') }}"
+                                        class="{{ request()->is('donate') ? 'active' : '' }}">DONATIE</a>
                                 </div>
 
                             </div>

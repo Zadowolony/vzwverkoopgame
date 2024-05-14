@@ -3,9 +3,9 @@
 <body>
 
     @section('content')
-        <main class="login-pagina-bg ">
+        <section class="bg-appleblue">
 
-            <div class="containet">
+            <div class="container">
                 <div class="row justify-center succes-flash">
                     @if (session('succes'))
                         {{ session('succes') }}
@@ -21,16 +21,16 @@
             <section class="row container login-container flex-wrap  ">
 
 
-                <div class="col-11 col-md-6  login-container-left ">
+                <div class="col-11 col-md-6  login-container-left  p-t-50 m-b--50">
                     <div>
-                        <div class="m-b--35">
+                        <div class="login-textbox-1">
 
                             <span class="login-text-1">welcome op de</span>
                         </div>
-                        <div class="m-b--40">
+                        <div class="login-textbox-1">
                             <span class="login-text-2">vzw</span>
                             <span class="login-text-3">donate</span>
-                            <span class="login-text-4">play</span>
+                            <span class="login-text-4">games</span>
                         </div>
                         <div class="text-right ">
 
@@ -39,8 +39,8 @@
                     </div>
                 </div>
 
-                <div class="col-9 col-md-6 login-container-right">
-                    <div class=" col-12 col-md-10 form-login-container">
+                <div class="col-9 col-md-6 login-container-right p-b-50">
+                    <div class=" col-12 col-md-10 form-login-container ">
 
                         <h2>Login</h2>
                         <form action="{{ route('login.post') }}" method="post" novalidate>
@@ -87,10 +87,8 @@
 
             </section>
 
-            <section>
 
-            </section>
-        </main>
+        </section>
     @endsection
 
 
