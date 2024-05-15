@@ -18,7 +18,7 @@
                         <p>
                         <p>{{ $game->game_beschrijving }}</p>
                         </p>
-                        <div class="game_category_console col-2">
+                        <div class="game_category_console col-5 m-b-25">
                             <p>{{ implode(', ', $game->platforms->pluck('platform_naam')->toArray()) }}</p>
                         </div>
 
@@ -56,22 +56,31 @@
 
                         <div class="col-12">
                             <h2 class="p-b-20">Verkopers :</h2>
-                            @foreach ($userGames as $index => $userGame)
-                                @if ($userGame->status === 'te koop' && $userGame->user_id != auth()->id())
+                            @php
+                                $filteredUserGames = $userGames->filter(function ($userGame) {
+                                    return $userGame->status === 'te koop' && $userGame->user_id != auth()->id();
+                                });
+                            @endphp
+
+                            @if ($filteredUserGames->isEmpty())
+                                <p>Geen verkopers</p>
+                            @else
+                                @foreach ($filteredUserGames as $index => $userGame)
                                     <div class="game-verkopers-tabel {{ $index % 2 == 0 ? 'bg-appleblue' : 'bg-yellow' }}">
                                         <h3>{{ $userGame->user->name }}</h3>
                                         <p>€{{ $userGame->prijs }}</p>
                                         <p>{{ $userGame->conditie }}</p>
-
                                         <button
                                             onclick="location.href='{{ route('verkoop.show', $userGame->id) }}'">Kopen</button>
-                                @endif
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
-                        @endforeach
-                    </div>
 
+
+
+                    </div>
                 </div>
-            </div>
             </div>
 
 

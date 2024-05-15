@@ -51,6 +51,8 @@ class GameController extends Controller
 
         $game = Game::with(['userGames.user', 'platforms'])->findOrFail($id);
         //dd($game); // Debug om te zien wat geladen wordt
+
+
         return view('game.show', [
             'game' => $game,
             'userGames' => $game->userGames,

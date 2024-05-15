@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('user_games', function (Blueprint $table) {
-            $table->enum('status', ['te koop', 'verkocht', 'niet te koop']);
+            $table->enum('status', ['te koop', 'verkocht', 'niet te koop'])->change();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('user_games', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->enum('status', ['te koop', 'verkocht'])->change();
         });
     }
 };

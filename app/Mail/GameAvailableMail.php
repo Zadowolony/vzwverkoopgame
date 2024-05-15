@@ -61,7 +61,7 @@ class GameAvailableMail extends Mailable
                     ->view('emails.gameAvailable')
                     ->with([
                         'gameTitle' => $this->game->titel,
-                        'gamePrice' => $this->game->userGames->first()->prijs, // Veronderstelt dat 'userGames' de prijsinformatie bevat
+                        'gamePrice' => $this->game->userGames->first()->prijs,
                         'gameDescription' => $this->game->beschrijving
                     ]);
     }

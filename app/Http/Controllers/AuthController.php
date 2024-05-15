@@ -56,8 +56,20 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email:rfc,filter,dns|unique:users,email',
             'profile_picture' => 'nullable|image|max:2048',
-            'password' => 'required|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&]/'
+            ],
             'password_confirmation' => 'required'
+        ], [
+            'password.min' => 'Het wachtwoord moet minimaal 8 tekens lang zijn.',
+            'password.regex' => 'Het wachtwoord moet minstens één kleine letter, één hoofdletter, één cijfer en één speciaal teken bevatten.',
+            'password.confirmed' => 'De wachtwoordbevestiging komt niet overeen.'
         ]);
 
         $path = null;
