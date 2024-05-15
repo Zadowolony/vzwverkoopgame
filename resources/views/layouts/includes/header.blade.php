@@ -51,8 +51,8 @@
                                         class="{{ request()->is('/') ? 'active' : '' }}">HOME</a>
                                     <a href="{{ route('games') }}"
                                         class="{{ request()->is('games') ? 'active' : '' }}">GAMES</a>
-                                    <a href="{{ route('events') }}"
-                                        class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a>
+                                    {{-- <a href="{{ route('events') }}"
+                                        class="{{ request()->is('events') ? 'active' : '' }}">EVENTS</a> --}}
                                     <a href="{{ route('login') }}"
                                         class="{{ request()->is('login') ? 'active' : '' }}">INLOGGEN</a>
                                     <a class=" btn-mobile-nav" href="{{ route('donate') }}"

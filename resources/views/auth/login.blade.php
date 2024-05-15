@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
-<body>
+<body class="h-70">
     @section('title', 'Login')
 
     @section('content')
-        <section class="bg-appleblue">
+        <section class="bg-appleblue h-100 ">
 
             <div class="container">
                 <div class="row justify-center succes-flash">
@@ -19,7 +19,7 @@
 
 
 
-            <section class="row container login-container flex-wrap  ">
+            <section class="row container login-container flex-wrap" style="min-height: 100vh;">
 
 
                 <div class="col-11 col-md-6  login-container-left  p-t-50 m-b--50">
