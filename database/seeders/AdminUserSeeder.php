@@ -20,7 +20,7 @@ class AdminUserSeeder extends Seeder
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
             'over_mij' => 'Ik ben de beheerder van de site.',
-            'profile_picture' => 'default_admin.png',
+            'profile_picture' => 'profile_pictures/default.png',
             'is_admin' => true,
             'password' => Hash::make('Rafal123'),
             'remember_token' => Str::random(10),
